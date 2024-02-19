@@ -4,18 +4,6 @@
 #include <unistd.h>
 #include <sys/stat.h>
 
-// Define error messages
-const char *errorMessages[] = {
-    "Success",
-    "Invalid parameter",
-    "File stat error"
-};
-
-// Log errors with error code and return early
-void handleError(ErrorCode code) {
-    fprintf(stderr, "Error: %s\n", errorMessages[code]);
-}
-
 /**
  * is_cmd - Checks if a file path points to an executable command
  * 

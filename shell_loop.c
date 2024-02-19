@@ -186,20 +186,6 @@ void fork_cmd(info_t *info) {
 
     }
 
-  } else {
-
-    wait(&amp);
-
-    if (WIFEXITED(info-&gt)) {
-
-      info-&gt = WEXITSTATUS(info-&gt);
-
-      if (info-&gt) {
-        handleError(PERMISSION_DENIED);
-      }
-
-    }
-
   }
 
 }

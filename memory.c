@@ -1,3 +1,6 @@
+#ifndef MEMORY_C
+#define MEMORY_C
+
 #include "shell.h"
 
 /**
@@ -16,3 +19,5 @@ int free(void **ptr)
 	}
 	return (0);
 }
+
+#endif

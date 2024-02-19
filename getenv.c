@@ -1,3 +1,6 @@
+#ifndef SHELL_ENV_H
+#define SHELL_ENV_H
+
 #include "shell.h"
 
 /**
@@ -91,3 +94,4 @@ int _setenv(info_t *info, char *var, char *value)
 	info->env_changed = 1;
 	return (0);
 }
+#endif
