@@ -19,6 +19,10 @@ Print the current environment variables:
 `gcc -o env-environ env-environ.c`
 `./env-environ`
 
+Print the current environment variables of the current process:
+`gcc -o env-main env-main.c`
+`./env-main`
+
 Create a new child process
 `gcc -o fork fork.c`
 `./fork`
