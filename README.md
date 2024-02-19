@@ -11,13 +11,13 @@ Get process ID:
 `gcc -o pid pid.c`
 `./pid`
 
+Executing a program:
+`gcc -o exec exec.c`
+`./exec`
 
-`gcc -o main main.c`
-`./main`
-
-Print the environment variables:
-`gcc -o env-main env-main.c`
-`./env-main`
+Print the current environment variables:
+`gcc -o env-environ env-environ.c`
+`./env-environ`
 
 ``
 ``
