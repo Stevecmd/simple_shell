@@ -35,12 +35,12 @@ int main(void)
     }
     else
     {
-        int status;
-        wait(&status); /* Ensure parent waits for child to finish before exiting */
-        if (WIFEXITED(status))
-        {
-            printf("Parent process finished\n");
-        }
+        wait(NULL); /* Ensure parent waits for child to finish before exiting */
+    }
+
+    if (pid != 0)
+    {
+        printf("Parent process finished\n");
     }
 
     return 0;
