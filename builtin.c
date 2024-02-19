@@ -9,6 +9,44 @@
 #define ERROR_MSG_ILLEGAL_NUMBER "Illegal number: "
 #define ERROR_MSG_CD_FAILURE "Failed to change directory"
 
+typedef struct {
+    char* command;
+    char* description;
+} Command;
+
+Command commands[] = {
+    {"exit", "Exit the shell"},
+    {"cd", "Change directory"},
+    {"help", "Display Help"}
+};
+
+const char* descriptions[NUM_CMDS] = {
+    "Exit the shell",
+    "Change directory", 
+    "Display this help"
+};
+
+/**
+ * main - my sample test cases
+ * @commandInfo: Structure containing potential arguments.
+ * Return: Always returns 0
+ */
+int main() {
+    info_t commandInfo;
+    commandInfo.argv[0] = "exit";
+    commandInfo.argv[1] = "1";
+    _myexit(&commandInfo);
+
+    commandInfo.argv[0] = "cd";
+    commandInfo.argv[1] = NULL;
+    _mycd(&commandInfo);
+
+    commandInfo.argv[0] = "help";
+    _help(&commandInfo);
+
+    return 0;
+}
+
 /**
  * _myexit - exits the shell
  * @commandInfo: Structure containing potential arguments.
@@ -51,9 +89,9 @@ int _mycd(info_t *commandInfo) {
     if (!commandInfo)
         return ERROR_NULL_PARAM;
 
-    char *dir;
+    char *dir, *currentDir;
     char buffer[1024];
-    char *currentDir = getcwd(buffer, 1024);
+    currentDir = getcwd(buffer, 1024);
 
     if (!currentDir) {
         _puts("TODO: >>getcwd failure emsg here<<\n");
@@ -92,62 +130,13 @@ int _mycd(info_t *commandInfo) {
  * @commandInfo: Structure containing potential arguments.
  * Return: Always returns 0
  */
-typedef struct {
-  char* command;
-  char* description;
-} Command;
-
-Command commands[] = {
-  {
-    .command = "exit",
-    .description = "Exit the shell"
-  },
-  {
-    .command = "cd", 
-    .description = "Change directory"
-  },
-  {
-    .command = "help", 
-    .description = "Display Help"
-  },
-};
-
-const char* descriptions[NUM_CMDS] = {
-  "Exit the shell",
-  "Change directory", 
-  "Display this help"
-};
-
 int _help(info_t* commandInfo) {
+    if (!commandInfo)
+        return ERROR_NULL_PARAM;
 
-  if(!ValidateCommandInfo(commandInfo))
-    return HandleError(INVALID_PARAMS);  
-
-  for(int i = 0; i < NUM_CMDS; i++) {
-    printf("%s - %s\n", commands[i], descriptions[i]);
-  }
-
-  return SUCCESS;
-
-}
-
-/**
- * main - my sample test cases
- * @commandInfo: Structure containing potential arguments.
- * Return: Always returns 0
- */
-int main() {
-    info_t commandInfo;
-    commandInfo.argv[0] = "exit";
-    commandInfo.argv[1] = "1";
-    _myexit(&commandInfo);
-
-    commandInfo.argv[0] = "cd";
-    commandInfo.argv[1] = NULL;
-    _mycd(&commandInfo);
-
-    commandInfo.argv[0] = "help";
-    _help(&commandInfo);
+    for (int i = 0; i < NUM_CMDS; i++) {
+        printf("%s - %s\n", commands[i].command, descriptions[i]);
+    }
 
     return 0;
 }

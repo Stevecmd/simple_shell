@@ -1,5 +1,8 @@
 #include "shell.h"
 
+#define SUCCESS 1
+#define FAILURE 0
+
 /**
  * add_node_end - Adds a new node with given string and index to the end of the list.
  * @head: Address of pointer to the head node.

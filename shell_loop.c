@@ -89,8 +89,8 @@ int find_builtin(info_t *info)
 		{"env", _myenv},
 		{"help", _help},
 		{"history", _myhistory},
-		{"setenv", _setenv},
-		{"getenv", _getenv},
+		{"setenv", (int (*)(info_t *))_setenv},,
+		{"getenv", (int (*)(info_t *))_getenv},
 		{"unsetenv", _myunsetenv},
 		{"cd", _mycd},
 		{"alias", _myalias},
@@ -185,7 +185,5 @@ void fork_cmd(info_t *info) {
       exit(1);
 
     }
-
   }
-
 }

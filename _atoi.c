@@ -45,7 +45,7 @@ int interactive(info_t* info)
  */
 int isDelim(char c, char *delim)
 {
-    // Validate parameters
+    /* Validate parameters */
     if (!delim) {
         handleError(PARAM_ERROR, "isDelim");
         return 0;
@@ -78,13 +78,15 @@ int _isalpha(char c)
  */
 int _atoi(char *str)
 {
+    int i, sign = 1, flag = 0;
+    unsigned int result = 0;
+      sign = 1;
+      flag = 0;
+
     if (!str) {
         handleError(PARAM_ERROR, "_atoi");
         return 0;
     }
-
-    int i, sign = 1, flag = 0;
-    unsigned int result = 0;
 
     for (i = 0; str[i] != '\0' && flag != 2; i++) {
         if (str[i] == '-')
