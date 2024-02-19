@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <unistd.h>
+#include <sys/wait.h>
 
 /**
  * main - fork example
