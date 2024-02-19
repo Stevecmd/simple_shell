@@ -112,7 +112,13 @@ typedef struct builtin
 } builtin_table;
 
 /*_atoi.c */
-char* errorMessages[];
+const char* errorMessages[] = { 
+    "No error", 
+    "Parameter error", 
+    "Invalid input error", 
+    "Invalid string error", 
+    "Runtime error"
+};
 void handleError(ErrorCode code, const char* func);
 int interactive(info_t* info);
 int isDelim(char c, char *delim);
