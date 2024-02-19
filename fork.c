@@ -31,16 +31,16 @@ int main(void)
     {
         printf("After fork:\n");
         my_pid = getpid();
-        printf("My pid is %u\n", my_pid);
+            printf("My pid is %u\n", my_pid);
     }
     else
     {
-        wait(NULL); /* Ensure parent waits for child to finish before exiting */
-    }
-
-    if (pid != 0)
-    {
-        printf("Parent process finished\n");
+        int status;
+        wait(&status); /* Ensure parent waits for child to finish before exiting */
+        if (WIFEXITED(status))
+        {
+            printf("Parent process finished\n");
+        }
     }
 
     return 0;
