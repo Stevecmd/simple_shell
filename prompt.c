@@ -1,3 +1,6 @@
+#ifndef _PROMPT_
+#define _PROMPT_
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -34,3 +37,5 @@ int main(void) {
 
     return 0;
 }
+
+#endif /* _PROMPT_ */
