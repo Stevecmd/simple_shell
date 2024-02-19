@@ -27,7 +27,7 @@ int main(void)
         return (1);
     }
 
-    if (pid == 0)
+    elif (pid == 0)
     {
         printf("After fork:\n");
         my_pid = getpid();
