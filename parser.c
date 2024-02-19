@@ -31,12 +31,12 @@ void handleError(ErrorCode code) {
  * Return: 1 if executable, 0 otherwise
  */
 int is_cmd(info_t *info, char *path) {
+    struct stat st;
     if (!info || !path) {
         handleError(INVALID_PARAMETER);
         return 0;
     }
 
-    struct stat st;
     if (stat(path, &st) != 0) {
         handleError(FILE_STAT_ERROR);
         return 0;
