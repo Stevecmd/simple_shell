@@ -16,26 +16,16 @@
 #include <errno.h>
 #include <stdio.h>
 
-
 /* Declare functions */
-char *get_location(char *command);
-int create_error(char **args, int error_code);
-void free_env(void);
-void free_args(char **args, char **front);
-void free_alias_list(void *aliases);
-char **_copyenv(void);
-int proc_file_commands(char *filename, int *exe_ret);
+
 
 /* Declare environ variable */
-extern char **environ;
+
 
 /* Declare variables */
-extern char *name;
-extern int hist;
-extern void *aliases;
+
 
 /* Main function */
-int main(int argc, char *argv[]);
 
 
 
