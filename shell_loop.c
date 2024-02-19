@@ -129,7 +129,7 @@ void find_cmd(info_t *info)
 		info->linecount_flag = 0;
 	}
 	for (i = 0, k = 0; info->arg[i]; i++)
-		if (!is_Delim(info->arg[i], " \t\n"))
+		if (!isDelim(info->arg[i], " \t\n"))
 			k++;
 	if (!k)
 		return;
@@ -172,7 +172,7 @@ void fork_cmd(info_t *info) {
 
   if (child_pid == 0) {
 
-    if (execve(info-&gt;path, info-&gt;argv, get_environ(info)) == -1) {
+    if (execve(info->path, info->argv, environ) == -1) {
 
       free_info(info, 1);
 
@@ -188,13 +188,13 @@ void fork_cmd(info_t *info) {
 
   } else {
 
-    wait(&amp;(info-&gt;status));
+    wait(&amp);
 
-    if (WIFEXITED(info-&gt;status)) {
+    if (WIFEXITED(info-&gt)) {
 
-      info-&gt;status = WEXITSTATUS(info-&gt;status);
+      info-&gt = WEXITSTATUS(info-&gt);
 
-      if (info-&gt;status == 126) {
+      if (info-&gt) {
         handleError(PERMISSION_DENIED);
       }
 

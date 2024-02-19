@@ -10,14 +10,6 @@ typedef enum {
     RUNTIME_ERROR
 } ErrorCode;
 
-const char* errorMessages[] = { 
-    "No error", 
-    "Parameter error", 
-    "Invalid input error", 
-    "Invalid string error", 
-    "Runtime error"
-};
-
 void handleError(
     ErrorCode code,
     const char* func
