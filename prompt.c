@@ -9,6 +9,7 @@
  * Memory allocated for each input line is freed after processing.
  *
  * Return: Always 0 to indicate successful completion.
+ * Auth: Steve Murimi
  */
 
 int main(void) {

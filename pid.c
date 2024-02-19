@@ -2,9 +2,10 @@
 #include <unistd.h>
 
 /**
- * main - PID
+ * main - Process identifier
  *
  * Return: Always 0.
+ * 
  */
 int main(void)
 {
