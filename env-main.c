@@ -1,3 +1,6 @@
+#ifndef _ENV-MAIN_
+#define _ENV-MAIN_
+
 #include <stdio.h>
 
 /**
@@ -17,3 +20,5 @@ int print_environment(int ac, char **av, char **env)
     }
     return (0);
 }
+
+#endif /* _ENV-MAIN_ */
