@@ -2,6 +2,7 @@
 This is my repo for 0x16. C - Simple Shell
 
 Executing the individual files: <br/>
+
 Main entry point:
 `gcc -o prompt prompt.c`
 `./prompt`
