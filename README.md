@@ -11,6 +11,10 @@ Get process ID:
 `gcc -o pid pid.c`
 `./pid`
 
+Get parent process ID:
+`gcc -o ppid ppid.c`
+`./ppid`
+
 Executing a program:
 `gcc -o exec exec.c`
 `./exec`
