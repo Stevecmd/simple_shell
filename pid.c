@@ -1,3 +1,6 @@
+#ifndef _PID_
+#define _PID_
+
 #include <stdio.h>
 #include <unistd.h>
 
@@ -15,3 +18,5 @@ int main(void)
 	printf("%u\n", my_pid);
 	return (0);
 }
+
+#endif /* _PID_ */
