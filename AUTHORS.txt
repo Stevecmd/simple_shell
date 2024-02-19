@@ -1,5 +1,0 @@
-Authors of Simple Shell Project:
-
-Steve Murimi: Primary author and creator of the simple shell program as a submission for the 
-ALX Project 0x16. C - Simple Shell.
-Steve Murimi developed the core functionality and structure of 'simple shell'.
