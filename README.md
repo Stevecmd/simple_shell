@@ -31,6 +31,10 @@ Create a new child process
 `gcc -o fork fork.c`
 `./fork`
 
+Simple fork a child process and then immediately waits for it
+`gcc -o wait wait.c`
+`./wait`
+
 ``
 ``
 
