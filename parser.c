@@ -4,6 +4,21 @@
 #include <unistd.h>
 #include <sys/stat.h>
 
+typedef enum {
+    SUCCESS = 0,
+    INVALID_PARAMETER,
+    FILE_STAT_ERROR
+} ErrorCode;
+
+void handleError(ErrorCode code) {
+    const char *errorMessages[] = {
+        "Success",
+        "Invalid parameter",
+        "File stat error"
+    };
+    fprintf(stderr, "Error: %s\n", errorMessages[code]);
+}
+
 /**
  * is_cmd - Checks if a file path points to an executable command
  * 
