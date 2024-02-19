@@ -5,6 +5,15 @@
 #include <sys/stat.h>
 
 /**
+ * handleError - Logs errors centrally with error code
+ * 
+ * @code: Error code indicating the type of error
+ */
+void handleError(ErrorCode code) {
+    fprintf(stderr, "Error: %s\n", errorMessages[code]);
+}
+
+/**
  * is_cmd - Checks if a file path points to an executable command
  * 
  * This function determines if the given file path refers to a file
