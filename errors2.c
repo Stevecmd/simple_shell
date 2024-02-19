@@ -131,3 +131,12 @@ char *convert_number(long int num, int base, int flags)
         *--ptr = sign;
     return (ptr);
 }
+
+/**
+ * handleError - Logs errors centrally with error code
+ * 
+ * @code: Error code indicating the type of error
+ */
+void handleError(ErrorCode code) {
+    fprintf(stderr, "Error: %s\n", errorMessages[code]);
+}

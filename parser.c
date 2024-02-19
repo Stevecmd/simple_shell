@@ -3,15 +3,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/stat.h>
-
-/**
- * handleError - Logs errors centrally with error code
- * 
- * @code: Error code indicating the type of error
- */
-void handleError(ErrorCode code) {
-    fprintf(stderr, "Error: %s\n", errorMessages[code]);
-}
+#include "errors.c"
+#include "errors2.c"
 
 /**
  * is_cmd - Checks if a file path points to an executable command
@@ -26,12 +19,15 @@ void handleError(ErrorCode code) {
  */
 int is_cmd(info_t *info, char *path) {
     struct stat st;
+    int result;
+
     if (!info || !path) {
         handleError(INVALID_PARAMETER);
         return 0;
     }
 
-    if (stat(path, &st) != 0) {
+    result = stat(path, &st);
+    if (result != 0) {
         handleError(FILE_STAT_ERROR);
         return 0;
     }
@@ -81,13 +77,13 @@ char *dup_chars(char *pathstr, int start, int stop) {
  * Return: Full path of command if found, NULL otherwise
  */
 char *find_path(info_t *info, char *pathstr, char *cmd) {
+    int i = 0, curr_pos = 0;
+    char *path;
+
     if (!info || !pathstr || !cmd) {
         handleError(INVALID_PARAMETER);
         return NULL;
     }
-
-    int i = 0, curr_pos = 0;
-    char *path;
 
     if ((_strlen(cmd) > 2) && starts_with(cmd, "./")) {
         if (is_cmd(info, cmd))
