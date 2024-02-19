@@ -19,7 +19,7 @@ int main(void)
 
     printf("Before fork:\n");
     pid = fork();
-    printf("My pid is %u\n", my_pid);
+        printf("My pid is %u\n", my_pid);
 
     if (pid == -1)
     {
