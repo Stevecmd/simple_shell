@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <sys/wait.h>
 
-// Define error codes
+/* Define error codes */
 typedef enum {
     SUCCESS = 0,
     INVALID_PARAMETER,
@@ -14,22 +14,12 @@ typedef enum {
     COMMAND_NOT_FOUND
 } ErrorCode;
 
-// Define error messages
-const char *errorMessages[] = {
-    "Success",
-    "Invalid parameter",
-    "Invalid input",
-    "Execution error",
-    "Permission denied",
-    "Command not found"
-};
-
-// Log errors centrally with error code
+/* Log errors centrally with error code */
 void handleError(ErrorCode code) {
     fprintf(stderr, "Error: %s\n", errorMessages[code]);
 }
 
-// Utility function to validate command
+/* Utility function to validate command */
 int isValidCommand(char *command) {
     return command && *command;
 }
@@ -97,9 +87,10 @@ int find_builtin(info_t *info)
 	builtin_table builtintbl[] = {
 		{"exit", _myexit},
 		{"env", _myenv},
-		{"help", _myhelp},
+		{"help", _help},
 		{"history", _myhistory},
-		{"setenv", _mysetenv},
+		{"setenv", _setenv},
+		{"getenv", _getenv},
 		{"unsetenv", _myunsetenv},
 		{"cd", _mycd},
 		{"alias", _myalias},
@@ -138,7 +129,7 @@ void find_cmd(info_t *info)
 		info->linecount_flag = 0;
 	}
 	for (i = 0, k = 0; info->arg[i]; i++)
-		if (!is_delim(info->arg[i], " \t\n"))
+		if (!is_Delim(info->arg[i], " \t\n"))
 			k++;
 	if (!k)
 		return;

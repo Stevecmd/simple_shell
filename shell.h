@@ -119,10 +119,9 @@ const char* errorMessages[] = {
     "Invalid string error", 
     "Runtime error"
 };
-void handleError(ErrorCode code, const char* func);
 int interactive(info_t* info);
 int isDelim(char c, char *delim);
-int _isalpha(int char);
+int _isalpha(char c);
 int _atoi(char *str);
 
 /*builtin.c */
@@ -187,8 +186,13 @@ char *_memset(char *s, char b, unsigned int n);
 void ffree(char **pp);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
-/*memory.c */
-int free(void *ptr);
+/*memory.c include guarded*/
+#ifndef MY_FREE_H
+#define MY_FREE_H
+
+int free(void* ptr);
+
+#endif
 
 /*getLine.c */
 ssize_t input_buf(info_t *info, char **buf, size_t *len);

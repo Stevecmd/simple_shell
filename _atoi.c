@@ -71,7 +71,7 @@ int isDelim(char c, char *delim)
  * @c: The character to input
  * Return: 1 if c is alphabetic, 0 otherwise
  */
-int _isalpha(int c)
+int _isalpha(char c)
 {
     if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
         return 1;
