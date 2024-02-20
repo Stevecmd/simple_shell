@@ -1,3 +1,6 @@
+#ifndef _WAIT_
+#define _WAIT_
+
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/types.h>
@@ -31,3 +34,5 @@ int main(void)
     }
     return (0);
 }
+
+#endif /* _WAIT_ */

@@ -8,8 +8,8 @@ Main entry point:
 `./prompt`
 
 Get process ID:
-`gcc -o pid pid.c`
-`./pid`
+`gcc -o mypid pid.c`
+`./mypid`
 
 Get parent process ID:
 `gcc -o ppid ppid.c`
@@ -24,8 +24,8 @@ Print the current environment variables:
 `./env-environ`
 
 Print the current environment variables of the current process:
-`gcc -o env-main env-main.c`
-`./env-main`
+`gcc -o printenv env-main.c`
+`./printenv`
 
 Create a new child process
 `gcc -o fork fork.c`
@@ -35,8 +35,9 @@ Simple fork a child process and then immediately waits for it
 `gcc -o wait wait.c`
 `./wait`
 
-``
-``
+Take a filename as a command-line argument and print various pieces of information about the file
+`gcc -o stat stat.c`
+`./stat`
 
 ``
 ``
