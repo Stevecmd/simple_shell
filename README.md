@@ -38,6 +38,14 @@ Simple fork a child process and then immediately waits for it
 Take a filename as a command-line argument and print various pieces of information about the file
 `gcc -o stat stat.c`
 `./stat`
+Usage:
+`./stat <filename>`
 
-``
-``
+
+
+Shell program: <br />
+interactive mode:
+`hsh main.c shell.c`
+
+non-interactive mode:
+`hsh main.c shell.c test_ls_2`
