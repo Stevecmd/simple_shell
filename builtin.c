@@ -1,3 +1,6 @@
+#ifndef _BUILTIN_
+#define _BUILTIN_
+
 #include "shell.h"
 
 /**
@@ -200,3 +203,5 @@ int shell_help(char **args, char __attribute__((__unused__)) **front)
 
 	return (0);
 }
+
+#endif /* _BUILTIN_ */
