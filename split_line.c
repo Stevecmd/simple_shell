@@ -1,3 +1,6 @@
+#ifndef _SPLIT_LINES_
+#define _SPLIT_LINES_
+
 #include "shell.h"
 
 /**
@@ -50,3 +53,5 @@ char **split_line(char *line)
     tokens[i] = NULL;  /* Null-terminate the tokens array */
     return tokens;     /* Return the tokens array */
 }
+
+#endif /* _SPLIT_LINES_ */
