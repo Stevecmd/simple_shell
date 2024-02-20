@@ -15,27 +15,24 @@
  * Auth: Steve Murimi
  */
 
-int main(void) {
-    char *line = NULL;
-    size_t len = 0;
-    ssize_t read;
+void shell_interactive(void)
+{
+ char *line;
+ char **args;
+ int status = -1;
 
-    printf("#cisfun$ ");
-
-    while ((read = getline(&line, &len, stdin)) != -1) {
-        printf("%s", line);
-        printf("#cisfun$ ");
-
-        free(line);
-        line = NULL;
-        len = 0;
-    }
-
-    if (line != NULL) {
-        free(line);
-    }
-
-    return 0;
+ do {
+  printf("cisfun$ ");
+  line = read_line();
+  args = split_line(line);
+  status = execute_args(args);
+  free(line);
+  free(args);
+  if (status >= 0)
+  {
+   exit(status);
+  }
+ } while (status == -1);
 }
 
 #endif /* _PROMPT_ */

@@ -45,7 +45,7 @@ int main(void);
 int main(void);
 
 /* prompt.c */
-int main(void);
+void shell_interactive(void);
 
 /* stat.c */
 int main(int argc, char *argv[]);
