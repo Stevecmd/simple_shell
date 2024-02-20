@@ -7,7 +7,7 @@
 #include <sys/wait.h>
 
 /**
- * main - fork & wait example
+ * main - fork & wait
  *
  * Return: Always 0.
  */
