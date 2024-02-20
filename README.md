@@ -41,10 +41,6 @@ Take a filename as a command-line argument and print various pieces of informati
 Usage:
 `./stat <filename>`
 
-Compile interactive shell and run it:
-`gcc -o shell_interactive shell_interactive.c shell.c`
-`./shell_interactive`
-
 
 Shell program: <br />
 interactive mode:
