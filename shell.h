@@ -18,7 +18,7 @@
 
 /* Function declarations */
 
-/* main.c */
+/* prompt.c */
 void shell_interactive(void);
 void shell_no_interactive(void);
 
@@ -46,6 +46,16 @@ int main(void);
 
 /* prompt.c */
 void shell_interactive(void);
+void shell_none_interactive(void);
+
+/* read_line.c */
+char *read_line(void);
+
+/* read_stream.c */
+char *read_stream(void);
+
+/* split_line.c */
+char **split_line(char *line);
 
 /* stat.c */
 int main(int argc, char *argv[]);
@@ -56,10 +66,6 @@ int main(int argc, char *argv[]);
 /* wait.c */
 int main(void);
 
-/* builtin.c */
-int (*get_builtin(char *command))(char **args, char **front);
-int shell_exit(char **args, char **front);
-int shell_cd(char **args, char __attribute__((__unused__)) **front);
-int shell_help(char **args, char __attribute__((__unused__)) **front);
+
 
 #endif /* _SHELL_H_ */
