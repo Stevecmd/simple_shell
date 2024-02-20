@@ -1,5 +1,5 @@
-#ifndef _MAIN_
-#define _MAIN_
+#ifndef _ENV_MAIN_
+#define _ENV_MAIN_
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -20,4 +20,4 @@ int main(void) {
     return 0;
 }
 
-#endif /* _MAIN_ */
+#endif /* _ENV_MAIN_ */

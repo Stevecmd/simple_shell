@@ -1,3 +1,6 @@
+#ifndef _READ_LINE_
+#define _READ_LINE_
+
 #include "shell.h"
 
 /**
@@ -31,3 +34,5 @@ char *read_line(void)
  }
  return (line);
 }
+
+#endif /* _READ_LINE_ */

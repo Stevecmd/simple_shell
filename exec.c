@@ -1,3 +1,6 @@
+#ifndef _EXEC_
+#define _EXEC_
+
 #include <stdio.h>
 #include <unistd.h>
 
@@ -18,3 +21,5 @@ int main(void)
     printf("After execve\n");
     return (0);
 }
+
+#endif /* _EXEC_ */
