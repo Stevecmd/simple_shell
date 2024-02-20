@@ -1,3 +1,5 @@
+#ifndef _SHELL_INTERACTIVE_
+#define _SHELL_INTERACTIVE_
 #include "shell.h"
 
 /**
@@ -18,17 +20,17 @@ void shell_interactive(void)
  int status = -1;
 
  do {
-  printf("cisfun$ "); /* print prompt symbol */
-  line = read_line(); /* read line from stdin */
-  args = split_line(line); /* tokenize line */
+  printf("cisfun$ ");
+  line = read_line();
+  args = split_line(line);
   status = execute_args(args);
-  /* avoid memory leaks */
   free(line);
   free(args);
-  /* exit with status */
   if (status >= 0)
   {
    exit(status);
   }
  } while (status == -1);
 }
+
+#endif /* _SHELL_INTERACTIVE_ */
