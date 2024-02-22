@@ -2,6 +2,8 @@
 This is my repo for 0x16. C - Simple Shell
 
 Executing the individual files: <br/>
+Install gcc:
+`sudo apt install gcc`
 
 Main entry point:
 `gcc -o prompt prompt.c`
@@ -41,6 +43,8 @@ Take a filename as a command-line argument and print various pieces of informati
 Usage:
 `./stat <filename>`
 
+Read stream:
+``
 
 Shell program: <br />
 interactive mode:

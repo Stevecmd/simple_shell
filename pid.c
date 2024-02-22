@@ -5,12 +5,13 @@
 #include <unistd.h>
 
 /**
- * main - Process identifier
- *
- * Return: Always 0.
- * 
- */
-int main(void)
+* get_process_identifier - Retrieves and prints the unique
+*							identifier of the current process.
+*
+* Return: Always 0.
+*
+*/
+int get_process_identifier(void)
 {
 	pid_t my_pid;
 

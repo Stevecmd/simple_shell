@@ -8,31 +8,40 @@
 #include <unistd.h>
 
 /**
- * main - Entry point
- *
- * Return: Always 0
- */
-int main(int argc, char *argv[]) {
+* shell_stat - Retrieves file information using stat
+* @argc: Number of arguments
+* @argv: Array of arguments including the filename
+*
+* This function retrieves information about a file specified
+* by the filename provided as the second argument in argv.
+* It prints various attributes of the file, such as size, mode,
+* device, inode, and number of links.
+*
+* Return: Always 0
+*/
+int shell_stat(int argc, char *argv[])
+{
     struct stat st;
 
+    // Check if the correct number of arguments is provided
     if (argc != 2) {
         perror("Usage: stat <filename>");
         exit(EXIT_FAILURE);
     }
 
+    // Extract the filename from the arguments
     const char *filename = argv[1];
 
+    // Retrieve file information using stat
     if (stat(filename, &st) == -1) {
         perror("stat");
         exit(EXIT_FAILURE);
     }
 
-    printf("File: %s\n", filename);
-    printf("Size: %ld bytes\n", st.st_size);
-    printf("Mode: %o\n", st.st_mode);
-    printf("Device: %ld\n", st.st_dev);
-    printf("Inode: %ld\n", st.st_ino);
-    printf("Links: %ld\n", st.st_nlink);
+    // Print file attributes
+    write(STDOUT_FILENO, "File: ", 6);
+    write(STDOUT_FILENO, filename, strlen(filename));
+    write(STDOUT_FILENO, "\n", 1);
 
     return 0;
 }

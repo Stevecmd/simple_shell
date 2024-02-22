@@ -19,52 +19,56 @@
 /* Function declarations */
 
 /* prompt.c */
+// int get_prompt_choice(void);
+
+/* shell_interactive.c */
 void shell_interactive(void);
-void shell_no_interactive(void);
 
-/* env-environ */
-int main(int ac, char **av, char **env);
-
-/* env-main */
-extern char **environ;
-int main(void);
-
-/* exec */
-int main(void);
-
-/* fork.c */
-int main(void);
-
-/* main.c */
-
-
-/* pid.c */
-int main(void);
-
-/* ppid.c */
-int main(void);
-
-/* prompt.c */
-void shell_interactive(void);
+/* shell_none_interactive.c */
 void shell_none_interactive(void);
 
-/* read_line.c */
-char *read_line(void);
+/* execute_args.c*/
+// int execute_args(char **args);
 
-/* read_stream.c */
-char *read_stream(void);
+// /* env-environ */
+// int environment(int ac, char **av, char **env);
 
-/* split_line.c */
-char **split_line(char *line);
+// /* env-main */
+// void print_environment(void);
 
-/* stat.c */
-int main(int argc, char *argv[]);
+// /* exec */
+// int execute_command(void);
 
-/* test_scripting */
+// /* fork.c */
+// int forking(void);
+
+// /* main.c */
 
 
-/* wait.c */
-int main(void);
+// /* pid.c */
+// int get_process_identifier(void);
+
+// /* ppid.c */
+// int get_parent_process_identifier(void);
+
+// /* read_line.c */
+// char *read_line(void);
+
+// /* read_stream.c */
+// char *read_stream(void);
+// int handle_buffer_resize(char *line, int i, int *bufsize);
+
+// /* split_line.c */
+// char **split_line(char *line);
+
+// /* stat.c */
+// int shell_stat(int argc, char *argv[]);
+
+// /* test_scripting */
+
+
+// /* wait.c */
+// int shell_wait(void);
 
 
 

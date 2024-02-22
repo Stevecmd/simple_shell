@@ -3,6 +3,9 @@
 
 #include "shell.h"
 
+#define INITIAL_BUF_SIZE 1024
+#define BUF_SIZE_INCREMENT 1024
+
 /**
  * read_stream - Read a line from the stream.
  *
@@ -15,50 +18,56 @@
  */
 char *read_stream(void)
 {
-    int bufsize = 1024;
+    int bufsize = INITIAL_BUF_SIZE;
     int i = 0;
-    int character;
     char *line = malloc(sizeof(char) * bufsize);
 
-    /* Check if memory allocation was successful */
-    if (line == NULL) {
+    if (line == NULL)
+    {
         fprintf(stderr, "read_stream: Allocation error\n");
         exit(EXIT_FAILURE);
     }
 
-    /* Read characters from stream until newline or end of file */
-    while (1) {
-        character = getchar();
-
-        /* Check for end of file */
-        if (character == EOF) {
-            free(line);
-            exit(EXIT_SUCCESS);
-        }
-        /* Check for newline */
-        else if (character == '\n') {
+    while (1)
+    {
+        char character = getchar();
+        if (character == EOF || character == '\n')
+        {
             line[i] = '\0';
             return line;
         }
-        else {
-            /* Store the character in the line buffer */
-            line[i] = character;
-        }
-
+        line[i] = character;
+        i = handle_buffer_resize(line, i, &bufsize);
         i++;
-
-        /* Check if buffer size needs to be increased */
-        if (i >= bufsize) {
-            bufsize += 1024;
-            line = realloc(line, bufsize);
-            /* Check if reallocation was successful */
-            if (line == NULL) {
-                fprintf(stderr, "read_stream: Reallocation error\n");
-                exit(EXIT_FAILURE);
-            }
-        }
     }
 }
 
+/**
+ * handle_buffer_resize - Resize the buffer if needed.
+ *
+ * This function checks if the buffer is full and resizes it if needed.
+ *
+ * @line: Pointer to the buffer.
+ * @i: Current index in the buffer.
+ * @bufsize: Pointer to the buffer size.
+ *
+ * Return: Updated index value.
+ */
+int handle_buffer_resize(char *line, int i, int *bufsize)
+{
+    if (i >= *bufsize - 1)
+    {
+        *bufsize += BUF_SIZE_INCREMENT;
+        char *temp = realloc(line, *bufsize);
+        if (temp == NULL)
+        {
+            fprintf(stderr, "read_stream: Reallocation error\n");
+            free(line);
+            exit(EXIT_FAILURE);
+        }
+        line = temp;
+    }
+    return i;
+}
 
-#endif /* __READ_STREAM__ */
+#endif /* _READ_STREAM_ */
