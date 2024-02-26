@@ -32,15 +32,30 @@ int shell_wait(void)
 	if (child_pid == 0)
 	{
 		char *message = "Wait for me, wait for me\n";
-		write(STDOUT_FILENO, message, strlen(message));
-		sleep(3);
+		int len = 0;
+		while (message[len] != '\0')
+			len++;
+		
+		write(STDOUT_FILENO, message, len);
+
+		int delay = 3;
+		while (delay > 0)
+		{
+			getpid(); /* Simulate a delay */
+			delay--;
+		}
+
 		_exit(0);
+
 	}
 	else
 	{
 		wait(&status);
 		char *message = "Oh, it's all better now\n";
-		write(STDOUT_FILENO, message, strlen(message));
+		int len = 0;
+		while (message[len] != '\0')
+			len++;
+		write(STDOUT_FILENO, message, len);
 	}
 	return (0);
 }
