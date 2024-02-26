@@ -27,6 +27,7 @@ int (*builtin_func[])(char **) = {
     &own_help,
     &own_exit
 };
+int num_builtins = sizeof(builtin_func_list) / sizeof(builtin_func_list[0]);
 
 int own_cd(char **args) {
     if (args[1] == NULL) {
