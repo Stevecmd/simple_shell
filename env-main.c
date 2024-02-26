@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 
 /**
 * print_environment - prints the unique identifier
@@ -21,17 +22,19 @@
  * Auth: Steve Murimi
  */
 
+extern char **environ;
+
 void print_environment(void)
 {
-	char **environ_ptr = environ;
 	int i = 0;
 
 	while (environ[i] != NULL)
 	{
-		printf("%s\n", environ[i]);
+		size_t len = strlen(environ[i]);
+		write(STDOUT_FILENO, environ[i], len);
+		write(STDOUT_FILENO, "\n", 1);
 		i++;
 	}
-	return (0);
 }
 
 #endif /* _ENV_MAIN_ */
