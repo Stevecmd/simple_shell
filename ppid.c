@@ -27,6 +27,8 @@ int get_parent_process_identifier(void)
 	char ppid_buffer[20];
 	int digits = 0;
 	pid_t temp_ppid = my_ppid;
+	int i;
+
 	/* Count number of digits in my_ppid */
 	do {
 		temp_ppid /= 10;
@@ -35,7 +37,8 @@ int get_parent_process_identifier(void)
 
 	/* Convert digits to string */
 	temp_ppid = my_ppid;
-	for (int i = digits - 1; i >= 0; i--) {
+
+	for (i = digits - 1; i >= 0; i--) {
 		ppid_buffer[i] = (temp_ppid % 10) + '0';
 		temp_ppid /= 10;
 	}
@@ -46,7 +49,7 @@ int get_parent_process_identifier(void)
 		exit(EXIT_FAILURE);
 	}
 
-	return 0;
+	return (0);
 }
 
 #endif /* _PPID_ */
