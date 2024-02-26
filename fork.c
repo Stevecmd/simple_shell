@@ -4,6 +4,10 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <string.h>
+
+// Declaration of int_to_string function
+void int_to_string(char *str, int num);
 
 /**
  * forking - Demonstrates the usage of the fork system
@@ -23,9 +27,14 @@ int forking(void)
 
 	my_pid = getpid();
 
-	printf("Before fork:\n");
+	write(STDOUT_FILENO, "Before fork:\n", 13);
 	pid = fork();
-	printf("My pid is %u\n", my_pid);
+	write(STDOUT_FILENO, "After fork:\n", 12);
+	char my_pid_str[20];
+	int_to_string(my_pid_str, my_pid);
+	write(STDOUT_FILENO, "My pid is ", 10);
+	write(STDOUT_FILENO, my_pid_str, strlen(my_pid_str));
+	write(STDOUT_FILENO, "\n", 1);	
 
 	if (pid == -1)
 	{
@@ -35,9 +44,12 @@ int forking(void)
 
 	else if (pid == 0)
 	{
-		printf("After fork:\n");
+		write(STDOUT_FILENO, "After fork:\n", 13);
 		my_pid = getpid();
-		printf("My pid is %u\n", my_pid);
+		int_to_string(my_pid_str, my_pid);
+		write(STDOUT_FILENO, "My pid is ", 10);
+		write(STDOUT_FILENO, my_pid_str, strlen(my_pid_str));
+		write(STDOUT_FILENO, "\n", 1);
 	}
 	else
 	{
@@ -48,7 +60,7 @@ int forking(void)
 
 		if (WIFEXITED(status))
 	{
-		printf("Parent process finished\n");
+		write(STDOUT_FILENO, "The parent process has finished\n", 25);
 	}
 	}
 		return (0);

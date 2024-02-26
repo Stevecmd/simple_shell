@@ -20,8 +20,8 @@ char **split_line(char *line)
 	/* Check if memory allocation for tokens array was successful */
 	if (!tokens)
 	{
-		fprintf(stderr, "split_line: allocation error for tokens\n");
-		exit(EXIT_FAILURE);
+		write(STDERR_FILENO, "split_line: allocation error for tokens\n", 40);
+		_exit(EXIT_FAILURE);
 	}
 
 	/* Tokenize the input line using strtok */
@@ -42,13 +42,14 @@ char **split_line(char *line)
 		if (i >= bufsize)
 		{
 			bufsize += bufsize;   /* Double the buffer size */
-			tokens = realloc(tokens, bufsize * sizeof(char *));  /* Resize tokens array */
+			char **temp = realloc(tokens, bufsize * sizeof(char *));  // Resize tokens array
 			/* Check if memory reallocation was successful */
-			if (!tokens)
+			if (!temp)
 			{
-				fprintf(stderr, "split_line: reallocation error for tokens\n");
-				exit(EXIT_FAILURE);
+				write(STDERR_FILENO, "split_line: reallocation error for tokens\n", 43);
+				_exit(EXIT_FAILURE);
 			}
+			tokens = temp;
 		}
 
 		/* Get next token */

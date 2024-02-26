@@ -28,47 +28,53 @@ void shell_interactive(void);
 void shell_none_interactive(void);
 
 /* execute_args.c*/
-// int execute_args(char **args);
+int execute_args(char **args);
 
 // /* env-environ */
-// int environment(int ac, char **av, char **env);
+int environment(int ac, char **av, char **env);
 
 // /* env-main */
-// void print_environment(void);
+void print_environment(void);
 
 // /* exec */
-// int execute_command(void);
+int execute_command(void);
 
 // /* fork.c */
-// int forking(void);
-
-// /* main.c */
-
+int forking(void);
 
 // /* pid.c */
-// int get_process_identifier(void);
+int get_process_identifier(void);
 
 // /* ppid.c */
-// int get_parent_process_identifier(void);
+int get_parent_process_identifier(void);
 
 // /* read_line.c */
-// char *read_line(void);
+char *read_line(void);
 
 // /* read_stream.c */
-// char *read_stream(void);
-// int handle_buffer_resize(char *line, int i, int *bufsize);
+char *read_stream(void);
+int handle_buffer_resize(char *line, int i, int *bufsize);
 
 // /* split_line.c */
-// char **split_line(char *line);
+char **split_line(char *line);
 
 // /* stat.c */
-// int shell_stat(int argc, char *argv[]);
+int shell_stat(int argc, char *argv[]);
 
 // /* test_scripting */
 
 
 // /* wait.c */
-// int shell_wait(void);
+int shell_wait(void);
+
+// /* builtin.c */
+char *builtin_func_list[];
+int (*builtin_func[])(char **);
+
+// /* builtin1.c */
+void int_to_string(char *str, int num);
+
+// /* builtin.c */
 
 
 

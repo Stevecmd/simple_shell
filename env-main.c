@@ -6,10 +6,12 @@
 #include <unistd.h>
 
 /**
-* print_environment - Retrieves and prints the unique
-*						identifier of the current process.
-* This function retrieves the process identifier (PID) of the current process
-* using getpid() function and prints it to the standard output.
+* print_environment - prints the unique identifier
+*						(environment variables) of the current process.
+* This function prints out the environment variables of
+* the current process.
+* It iterates through the array of environment
+* variables, printing each one. 
 *
 * Return: Always 0 - success.
 */

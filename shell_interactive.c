@@ -34,12 +34,13 @@ void shell_interactive(void) {
     int should_run = 1;
 
     while (should_run) {
-        printf("cisfun$ "); // Prompt symbol
-        fflush(stdout); // Flush stdout to ensure prompt is displayed
+        write(STDOUT_FILENO, "cisfun$ ", 8); // Prompt symbol
 
         // Read input from user
-        if (!fgets(line, sizeof(line), stdin)) {
-            break; // Exit loop if fgets encounters EOF or error
+        ssize_t read_result = read(STDIN_FILENO, line, MAX_LINE);
+        if (read_result < 0) {
+            perror("read");
+            break; // Exit loop if encounters EOF or error
         }
 
         // Tokenize input line into arguments

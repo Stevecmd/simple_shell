@@ -17,6 +17,10 @@ Get parent process ID:
 `gcc -o ppid ppid.c`
 `./ppid`
 
+Determine whether a function is builtin or external
+`gcc -o execute_args execute_args.c builtin.c`
+`./execute_args`
+
 Executing a program:
 `gcc -o exec exec.c`
 `./exec`

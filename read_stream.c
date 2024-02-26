@@ -24,7 +24,7 @@ char *read_stream(void)
 
     if (line == NULL)
     {
-        fprintf(stderr, "read_stream: Allocation error\n");
+        perror("Read_stream: Allocation error\n");
         exit(EXIT_FAILURE);
     }
 
@@ -61,7 +61,7 @@ int handle_buffer_resize(char *line, int i, int *bufsize)
         char *temp = realloc(line, *bufsize);
         if (temp == NULL)
         {
-            fprintf(stderr, "read_stream: Reallocation error\n");
+            perror("Read_stream: Reallocation error\n");
             free(line);
             exit(EXIT_FAILURE);
         }

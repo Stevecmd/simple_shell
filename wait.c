@@ -5,34 +5,38 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include "shell.h"
 
 /**
-* wait - fork & wait
+* shell_wait - fork & wait
 *
 * Return: Always 0.
 */
 int shell_wait(void)
 {
-pid_t child_pid;
-int status;
+	pid_t child_pid;
+	int status;
 
-child_pid = fork();
-if (child_pid == -1)
-{
-perror("Error:");
-return (1);
-}
-if (child_pid == 0)
-{
-printf("Wait for me, wait for me\n");
-sleep(3);
-}
-else
-{
-wait(&status);
-printf("Oh, it's all better now\n");
-}
-return (0);
+	child_pid = fork();
+	if (child_pid == -1)
+	{
+		perror("Error:");
+		return (1);
+	}
+	if (child_pid == 0)
+	{
+		char *message = "Wait for me, wait for me\n";
+		write(STDOUT_FILENO, message, strlen(message));
+		sleep(3);
+		_exit(0);
+	}
+	else
+	{
+		wait(&status);
+		char *message = "Oh, it's all better now\n";
+		write(STDOUT_FILENO, message, strlen(message));
+	}
+	return (0);
 }
 
 #endif /* _WAIT_ */

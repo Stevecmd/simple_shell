@@ -10,6 +10,9 @@
 * @av: An array of strings containing the command-line arguments.
 * @env: An array of strings containing the environment variables.
 *
+* The program iterates through the array of
+* environment variables, printing each one.
+* 
 * Return: Always 0.
 */
 int environment(int ac, char **av, char **env)

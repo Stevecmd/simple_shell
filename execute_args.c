@@ -3,6 +3,16 @@
 
 #include "shell.h"
 #include <string.h> // Include for strcmp function
+#include "builtin.h"
+#include "builtin.c"
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <fcntl.h>
+#include <dirent.h>
+#include <signal.h>
 
 /**
 * execute_args - Determine whether a command is
@@ -18,34 +28,22 @@
 * Return: 1 on success, 0 otherwise
 */
 
-int execute_args(char **args)
-{
-	char *builtin_func_list[] = {
-		"cd",
-		"env",
-		"help",
-		"exit"
-	};
-	int (*builtin_func[])(char **) = {
-		&own_cd,
-		&own_env,
-		&own_help,
-		&own_exit
-	};
-int num_builtins = sizeof(builtin_func_list) / sizeof(builtin_func_list[0]);
+int execute_args(char **args){
 int i = 0;
+int status;
+pid_t pid;
 
 /* Check if args is NULL */
 if (args == NULL)
 {
-	fprintf(stderr, "execute_args: Null argument\n");
+	perror("Execute_args: Null argument");
 	return (0);
 }
 
 /* Check if the command is empty */
 if (args[0] == NULL)
 {
-	fprintf(stderr, "execute_args: Empty command\n");
+	perror("Execute_args: Empty command");
 	return (-1);
 }
 
@@ -59,7 +57,25 @@ for (i = 0; i < num_builtins; i++)
 	}
 }
 	/* If the command is not a builtin, execute it as an external process */
-	return (new_process(args));
+	pid = fork();
+	if (pid < 0) {
+		perror("Execute_args: fork");
+		exit(EXIT_FAILURE);
+	} else if (pid == 0) {
+		// Child process
+		if (execve(args[0], args, NULL) == -1) {
+			perror("Execute_args: execve");
+			_exit(EXIT_FAILURE);
+		}
+	} else {
+		// Parent process
+		do {
+			if (waitpid(pid, &status, WUNTRACED) == -1) {
+				perror("Execute_args: waitpid");
+				exit(EXIT_FAILURE);
+			}
+		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
+	}
+	return (0);
 }
-
 #endif /* _EXECUTE_ARGS_*/
