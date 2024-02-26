@@ -23,7 +23,7 @@ int shell_wait(void)
 	pid_t child_pid;
 	int status;
 	char *message = "Wait for me, wait for me\n";
-	char *message = "Oh, it's all better now\n";
+	char *message2 = "Oh, it's all better now\n";
 	int len, delay;
 
 	child_pid = fork();
@@ -56,7 +56,7 @@ int shell_wait(void)
 		int len = 0;
 		while (message[len] != '\0')
 			len++;
-		write(STDOUT_FILENO, message, len);
+		write(STDOUT_FILENO, message2, len);
 	}
 	return (0);
 }
