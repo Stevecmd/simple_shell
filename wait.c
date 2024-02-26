@@ -34,13 +34,13 @@ int shell_wait(void)
 	}
 	if (child_pid == 0)
 	{
-		int len = 0;
+		len = 0;
 		while (message[len] != '\0')
 			len++;
 		
 		write(STDOUT_FILENO, message, len);
 
-		int delay = 3;
+		delay = 3;
 		while (delay > 0)
 		{
 			getpid(); /* Simulate a delay */
@@ -53,7 +53,7 @@ int shell_wait(void)
 	else
 	{
 		wait(&status);
-		int len = 0;
+		len = 0;
 		while (message[len] != '\0')
 			len++;
 		write(STDOUT_FILENO, message2, len);
