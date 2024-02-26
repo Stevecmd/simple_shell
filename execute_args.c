@@ -73,7 +73,7 @@ for (i = 0; i < num_builtins; i++)
 			_exit(EXIT_FAILURE);
 		}
 	} else {
-		// Parent process
+		/* Parent process */
 		do {
 			if (waitpid(pid, &status, WUNTRACED) == -1) {
 				perror("Execute_args: waitpid");

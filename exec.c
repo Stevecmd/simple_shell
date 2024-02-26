@@ -30,7 +30,7 @@ int execute_command(void)
 		write(STDERR_FILENO, error_message, strlen(error_message));
 		exit(EXIT_FAILURE);
 	}
-	// This line will not be executed if execve is successful
+	/* This line will not be executed if execve is successful */
 	write(STDOUT_FILENO, "After we use execve\n", 21);
 	return (0);
 }

@@ -45,7 +45,7 @@ int new_process(char **args)
 			}
 		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}
-return (0); // Success
+return (0); /* Success */
 }
 
 #endif /* _NEW_PROCESS_ */

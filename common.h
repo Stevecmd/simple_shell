@@ -8,7 +8,7 @@
  * Auth: Steve Murimi
  */
 
-// Function declarations for common functions
+/* Function declarations for common functions */
 void display_menu(void);
 int read_choice(void);
 

@@ -34,39 +34,39 @@ void shell_none_interactive(void);
 void shell_none_interactive(void)
 {
     char line[MAX_LINE];
-    char *args[MAX_ARGS + 1]; // Additional slot for NULL terminator
+    char *args[MAX_ARGS + 1]; /* Additional slot for NULL terminator */
 
-    // Read input from stdin until EOF
+    /* Read input from stdin until EOF */
     ssize_t bytes_read;
     while ((bytes_read = read(STDIN_FILENO, line, sizeof(line))) > 0) {
-        // Tokenize input line into arguments
+        /* Tokenize input line into arguments */
         char *token = strtok(line, " \t\n");
         int argc = 0;
         while (token && argc < MAX_ARGS) {
             args[argc++] = token;
             token = strtok(NULL, " \t\n");
         }
-        args[argc] = NULL; // Set the last argument to NULL as required by execvp
+        args[argc] = NULL; /* Set the last argument to NULL as required by execvp */
 
         if (argc == 0) {
-            continue; // Skip empty lines
+            continue; /* Skip empty lines */
         }
 
-        // Fork a child process to execute the command
+        /* Fork a child process to execute the command */
         pid_t pid = fork();
         if (pid < 0) {
             perror("fork");
             exit(EXIT_FAILURE);
         } else if (pid == 0) {
-            // Child process
+            /* Child process */
             if (execvp(args[0], args) == -1) {
-                perror("execvp"); // Print error if execution fails
+                perror("execvp"); /* Print error if execution fails */
                 exit(EXIT_FAILURE);
             }
-            // No need to free memory in child process
+            /* No need to free memory in child process */
         } else {
-            // Parent process
-            wait(NULL); // Wait for the child process to complete
+            /* Parent process */
+            wait(NULL); /* Wait for the child process to complete */
         }
     }
 

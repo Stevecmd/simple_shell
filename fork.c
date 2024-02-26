@@ -6,7 +6,7 @@
 #include <sys/wait.h>
 #include <string.h>
 
-// Declaration of int_to_string function
+/* Declaration of int_to_string function */
 void int_to_string(char *str, int num);
 
 /**

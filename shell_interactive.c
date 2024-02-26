@@ -11,8 +11,8 @@
 #include "shell.h"
 #include "common.h"
 
-#define MAX_LINE 80 // Maximum length of command
-#define MAX_ARGS 10 // Maximum number of arguments
+#define MAX_LINE 80 /* Maximum length of command */
+#define MAX_ARGS 10 /* Maximum number of arguments */
 
 void shell_interactive(void);
 
@@ -31,49 +31,49 @@ void shell_interactive(void);
 
 void shell_interactive(void) {
     char line[MAX_LINE];
-    char *args[MAX_ARGS + 1]; // Additional slot for NULL terminator
+    char *args[MAX_ARGS + 1]; /* Additional slot for NULL terminator */
     int should_run = 1;
 
     while (should_run) {
-        write(STDOUT_FILENO, "cisfun$ ", 8); // Prompt symbol
+        write(STDOUT_FILENO, "cisfun$ ", 8); /* Prompt symbol */
 
-        // Read input from user
+        /* Read input from user */
         ssize_t read_result = read(STDIN_FILENO, line, MAX_LINE);
         if (read_result < 0) {
             perror("read");
-            break; // Exit loop if encounters EOF or error
+            break; /* Exit loop if encounters EOF or error */
         }
 
-        // Tokenize input line into arguments
+        /* Tokenize input line into arguments */
         char *token = strtok(line, " \t\n");
         int argc = 0;
         while (token && argc < MAX_ARGS) {
             args[argc++] = token;
             token = strtok(NULL, " \t\n");
         }
-        args[argc] = NULL; // Set the last argument to NULL as required by execvp
+        args[argc] = NULL; /* Set the last argument to NULL as required by execvp */
 
         if (argc == 0) {
-            continue; // Skip empty lines
+            continue; /* Skip empty lines */
         }
 
-        // Handle built-in commands
+        /* Handle built-in commands */
         if (strcmp(args[0], "exit") == 0) {
             should_run = 0; // Exit the shell
         } else {
-            // Fork a child process to execute the command
+            /* Fork a child process to execute the command */
             pid_t pid = fork();
             if (pid < 0) {
                 perror("fork");
             } else if (pid == 0) {
-                // Child process
+                /* Child process */
                 if (execvp(args[0], args) == -1) {
-                    perror("execvp"); // Print error if execution fails
+                    perror("execvp"); /* Print error if execution fails */
                     exit(EXIT_FAILURE);
                 }
             } else {
-                // Parent process
-                wait(NULL); // Wait for the child process to complete
+                /* Parent process */
+                wait(NULL); /* Wait for the child process to complete */
             }
         }
     }

@@ -1,7 +1,7 @@
 #ifndef _ENV_ENVIRON_
 #define _ENV_ENVIRON_
 
-#include <stdio.h>
+#include <unistd.h>
 
 /**
 * environment - prints the environment
@@ -21,16 +21,21 @@
  * Auth: Steve Murimi
  */
 
-int environment(int ac, char **av, char **env)
+int environment(char **env)
 {
-	unsigned int i;
+	unsigned int i = 0;
+	char newline = '\n';
 
-	i = 0;
 	while (env[i] != NULL)
-{
-	printf("%s\n", env[i]);
-	i++;
-}
+	{
+		size_t len = 0;
+		while (env[i][len] != '\0') {
+			len++;
+		}
+		write(STDOUT_FILENO, env[i], len);
+		write(STDOUT_FILENO, &newline, 1);
+		i++;
+	}
 	return (0);
 }
 

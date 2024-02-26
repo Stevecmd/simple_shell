@@ -29,22 +29,22 @@ int shell_stat(int argc, char *argv[])
 {
     struct stat st;
 
-    // Check if the correct number of arguments is provided
+    /* Check if the correct number of arguments is provided */
     if (argc != 2) {
         perror("Usage: stat <filename>");
         exit(EXIT_FAILURE);
     }
 
-    // Extract the filename from the arguments
+    /* Extract the filename from the arguments */
     const char *filename = argv[1];
 
-    // Retrieve file information using stat
+    /* Retrieve file information using stat */
     if (stat(filename, &st) == -1) {
         perror("stat");
         exit(EXIT_FAILURE);
     }
 
-    // Print file attributes
+    /* Print file attributes */
     write(STDOUT_FILENO, "File: ", 6);
     write(STDOUT_FILENO, filename, strlen(filename));
     write(STDOUT_FILENO, "\n", 1);

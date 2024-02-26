@@ -24,13 +24,13 @@ int main(void)
         }
     } while (!valid_choice);
 
-    // Execute the selected shell mode
+    /* Execute the selected shell mode */
     if (choice == 1) {
-        shell_interactive(); // Execute interactive shell
+        shell_interactive(); /* Execute interactive shell */
     } else {
-        shell_none_interactive(); // Execute non-interactive shell
+        shell_none_interactive(); /* Execute non-interactive shell */
     }
-    return 0;
+    return (0);
 }
 
 #endif /* _MAIN_ */
