@@ -34,19 +34,24 @@ void shell_interactive(void) {
     char *args[MAX_ARGS + 1]; /* Additional slot for NULL terminator */
     int should_run = 1;
 
+    ssize_t read_result;
+    /* Tokenize input line into arguments */
+    char *token;
+    int argc = 0;
+
     while (should_run) {
         write(STDOUT_FILENO, "cisfun$ ", 8); /* Prompt symbol */
 
         /* Read input from user */
-        ssize_t read_result = read(STDIN_FILENO, line, MAX_LINE);
+        read_result = read(STDIN_FILENO, line, MAX_LINE);
         if (read_result < 0) {
             perror("read");
             break; /* Exit loop if encounters EOF or error */
         }
 
-        /* Tokenize input line into arguments */
-        char *token = strtok(line, " \t\n");
-        int argc = 0;
+
+        argc = 0;
+        token = strtok(line, " \t\n");
         while (token && argc < MAX_ARGS) {
             args[argc++] = token;
             token = strtok(NULL, " \t\n");
