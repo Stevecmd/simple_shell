@@ -6,6 +6,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <string.h>
 
 /**
 * shell_stat - Retrieves file information using stat
@@ -27,29 +28,37 @@
 
 int shell_stat(int argc, char *argv[])
 {
-    struct stat st;
+	struct stat st;
+	int i;
+	const char *filename;
 
-    /* Check if the correct number of arguments is provided */
-    if (argc != 2) {
-        perror("Usage: stat <filename>");
-        exit(EXIT_FAILURE);
-    }
+	/* Check if the correct number of arguments is provided */
+	if (argc != 2) {
+		perror("Usage: stat <filename>");
+		exit(EXIT_FAILURE);
+	}
 
-    /* Extract the filename from the arguments */
-    const char *filename = argv[1];
+	/* Extract the filename from the arguments */
+	filename = argv[1];
 
-    /* Retrieve file information using stat */
-    if (stat(filename, &st) == -1) {
-        perror("stat");
-        exit(EXIT_FAILURE);
-    }
+	/* Retrieve file information using stat */
+	if (stat(filename, &st) == -1) {
+		perror("stat");
+		exit(EXIT_FAILURE);
+	}
 
-    /* Print file attributes */
-    write(STDOUT_FILENO, "File: ", 6);
-    write(STDOUT_FILENO, filename, strlen(filename));
-    write(STDOUT_FILENO, "\n", 1);
+	/* Print file attributes */
+	write(STDOUT_FILENO, "File: ", 6);
 
-    return 0;
+
+	/* Print each character of the filename */
+	for (i = 0; filename[i] != '\0'; i++) {
+		write(STDOUT_FILENO, &filename[i], 1);
+	}
+	
+	write(STDOUT_FILENO, "\n", 1);
+
+	return 0;
 }
 
 #endif /* _STAT_ */
