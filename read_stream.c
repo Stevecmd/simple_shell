@@ -61,10 +61,11 @@ char *read_stream(void)
  */
 int handle_buffer_resize(char *line, int i, int *bufsize)
 {
+    char *temp;
     if (i >= *bufsize - 1)
     {
         *bufsize += BUF_SIZE_INCREMENT;
-        char *temp = realloc(line, *bufsize);
+        temp = realloc(line, *bufsize);
         if (temp == NULL)
         {
             perror("Read_stream: Reallocation error\n");
