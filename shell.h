@@ -16,19 +16,16 @@
 #include <errno.h>
 #include <stdio.h>
 
+#include "common.h"
+
 /* Function declarations */
 
-/* prompt.c */
-// int get_prompt_choice(void);
+// /* builtin.c */
+char *builtin_func_list[];
+int (*builtin_func[])(char **);
 
-/* shell_interactive.c */
-void shell_interactive(void);
-
-/* shell_none_interactive.c */
-void shell_none_interactive(void);
-
-/* execute_args.c*/
-int execute_args(char **args);
+// /* builtin1.c */
+void int_to_string(char *str, int num);
 
 // /* env-environ */
 int environment(int ac, char **av, char **env);
@@ -39,8 +36,17 @@ void print_environment(void);
 // /* exec */
 int execute_command(void);
 
+/* execute_args.c*/
+int execute_args(char **args);
+
 // /* fork.c */
 int forking(void);
+
+// /* main.c */
+int main(void);
+
+// /* new_process */
+int new_process(char **args);
 
 // /* pid.c */
 int get_process_identifier(void);
@@ -48,12 +54,22 @@ int get_process_identifier(void);
 // /* ppid.c */
 int get_parent_process_identifier(void);
 
+/* prompt.c */
+void display_menu(void);
+int read_choice(void);
+
 // /* read_line.c */
 char *read_line(void);
 
 // /* read_stream.c */
 char *read_stream(void);
 int handle_buffer_resize(char *line, int i, int *bufsize);
+
+/* shell_interactive.c */
+void shell_interactive(void);
+
+/* shell_none_interactive.c */
+void shell_none_interactive(void);
 
 // /* split_line.c */
 char **split_line(char *line);
@@ -66,16 +82,6 @@ int shell_stat(int argc, char *argv[]);
 
 // /* wait.c */
 int shell_wait(void);
-
-// /* builtin.c */
-char *builtin_func_list[];
-int (*builtin_func[])(char **);
-
-// /* builtin1.c */
-void int_to_string(char *str, int num);
-
-// /* builtin.c */
-
 
 
 #endif /* _SHELL_H_ */

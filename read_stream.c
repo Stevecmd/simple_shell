@@ -16,6 +16,12 @@
  *
  * Return: A pointer to the string containing the read line.
  */
+
+/*
+ * File: read_stream.c
+ * Auth: Steve Murimi
+ */
+
 char *read_stream(void)
 {
     int bufsize = INITIAL_BUF_SIZE;

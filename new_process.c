@@ -9,6 +9,12 @@
 *
 * Return: 1 on success, -1 on failure.
 */
+
+/*
+ * File: new_process.c
+ * Auth: Steve Murimi
+ */
+
 int new_process(char **args)
 {
 	pid_t pid;

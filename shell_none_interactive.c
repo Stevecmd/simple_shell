@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include "common.h"
 
 #define MAX_LINE 1024 // Maximum length of command
 #define MAX_ARGS 128  // Maximum number of arguments

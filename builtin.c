@@ -5,6 +5,11 @@
 #include <string.h>
 #include "builtin.h"
 
+/*
+ * File: builtin.c
+ * Auth: Steve Murimi
+ */
+
 char *builtin_func_list[] = {
     "cd",
     "env",

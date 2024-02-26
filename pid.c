@@ -11,6 +11,12 @@
 * Return: Always 0.
 *
 */
+
+/*
+ * File: pid.c
+ * Auth: Steve Murimi
+ */
+
 int get_process_identifier(void)
 {
 	pid_t my_pid;

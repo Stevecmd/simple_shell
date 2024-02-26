@@ -13,6 +13,12 @@
 * Return: A pointer to the string containing the input line.
 *          Returns NULL if an error occurs or if end-of-file (EOF) is reached.
 */
+
+/*
+ * File: read_line.c
+ * Auth: Steve Murimi
+ */
+
 char *read_line(void)
 {
 	char *line = NULL;

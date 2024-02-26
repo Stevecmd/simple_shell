@@ -6,6 +6,11 @@
 #include "prompt.h"
 #include "shell.h"
 
+/*
+ * File: main.c
+ * Auth: Steve Murimi
+ */
+
 int main(void)
 {
     int choice;

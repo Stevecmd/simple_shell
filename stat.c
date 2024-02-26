@@ -19,6 +19,12 @@
 *
 * Return: Always 0
 */
+
+/*
+ * File: stat.c
+ * Auth: Steve Murimi
+ */
+
 int shell_stat(int argc, char *argv[])
 {
     struct stat st;

@@ -5,6 +5,11 @@
 #include <sys/wait.h>
 #include <string.h>
 
+/*
+ * File: builtin1.c
+ * Auth: Steve Murimi
+ */
+
 // Custom function to convert an integer to a string
 void int_to_string(char *str, int num) {
     int i = 0;

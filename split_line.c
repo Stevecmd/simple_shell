@@ -10,6 +10,12 @@
 * Return: A pointer to an array of tokens.
 *         Returns NULL if memory allocation fails or if the input line is empty.
 */
+
+/*
+ * File: split_line.c
+ * Auth: Steve Murimi
+ */
+
 char **split_line(char *line)
 {
 	int bufsize = 64;            /* Initial size of the tokens array */

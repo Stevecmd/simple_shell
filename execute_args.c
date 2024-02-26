@@ -28,6 +28,11 @@
 * Return: 1 on success, 0 otherwise
 */
 
+/*
+ * File: execute_args.c
+ * Auth: Steve Murimi
+ */
+
 int execute_args(char **args){
 int i = 0;
 int status;

@@ -1,6 +1,11 @@
 #ifndef BUILTIN_H
 #define BUILTIN_H
 
+/*
+ * File: builtin.h
+ * Auth: Steve Murimi
+ */
+
 int own_cd(char **args);
 int own_env(char **args);
 int own_help(char **args);

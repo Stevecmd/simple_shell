@@ -15,6 +15,12 @@
 * 
 * Return: Always 0.
 */
+
+/*
+ * File: env-environ.h
+ * Auth: Steve Murimi
+ */
+
 int environment(int ac, char **av, char **env)
 {
 	unsigned int i;

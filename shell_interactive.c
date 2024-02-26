@@ -9,6 +9,7 @@
 #include <stdbool.h>
 
 #include "shell.h"
+#include "common.h"
 
 #define MAX_LINE 80 // Maximum length of command
 #define MAX_ARGS 10 // Maximum number of arguments

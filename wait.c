@@ -12,6 +12,12 @@
 *
 * Return: Always 0.
 */
+
+/*
+ * File: wait.c
+ * Auth: Steve Murimi
+ */
+
 int shell_wait(void)
 {
 	pid_t child_pid;

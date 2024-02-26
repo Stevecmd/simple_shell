@@ -20,6 +20,11 @@ void int_to_string(char *str, int num);
  * Return: Always 0.
  */
 
+ /*
+ * File: fork.c
+ * Auth: Steve Murimi
+ */
+
 int forking(void)
 {
 	pid_t my_pid;
