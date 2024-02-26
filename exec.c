@@ -1,8 +1,9 @@
 #ifndef _EXEC_
 #define _EXEC_
 
-#include <stdlib.h> // For EXIT_FAILURE
+#include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 
 /**
 * execute_command - executes a command using execve.

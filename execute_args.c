@@ -2,7 +2,7 @@
 #define _EXECUTE_ARGS_
 
 #include "shell.h"
-#include <string.h> // Include for strcmp function
+#include <string.h>
 #include "builtin.h"
 #include "builtin.c"
 #include <stdio.h>
@@ -67,7 +67,7 @@ for (i = 0; i < num_builtins; i++)
 		perror("Execute_args: fork");
 		exit(EXIT_FAILURE);
 	} else if (pid == 0) {
-		// Child process
+		/* Child process */
 		if (execve(args[0], args, NULL) == -1) {
 			perror("Execute_args: execve");
 			_exit(EXIT_FAILURE);

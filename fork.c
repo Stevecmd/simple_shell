@@ -29,13 +29,14 @@ int forking(void)
 {
 	pid_t my_pid;
 	pid_t pid;
+	char my_pid_str[20];
 
 	my_pid = getpid();
 
 	write(STDOUT_FILENO, "Before fork:\n", 13);
 	pid = fork();
 	write(STDOUT_FILENO, "After fork:\n", 12);
-	char my_pid_str[20];
+
 	int_to_string(my_pid_str, my_pid);
 	write(STDOUT_FILENO, "My pid is ", 10);
 	write(STDOUT_FILENO, my_pid_str, strlen(my_pid_str));

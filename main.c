@@ -1,9 +1,9 @@
 #ifndef _MAIN_
 #define _MAIN_
 
-#include <stdbool.h> // For boolean type
+#include <stdbool.h> /* For boolean type */
 
-#include "prompt.h"
+#include "prompt.c"
 #include "shell.h"
 
 /*
