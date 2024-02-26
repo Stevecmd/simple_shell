@@ -8,8 +8,8 @@
 #include <string.h>
 #include "common.h"
 
-#define MAX_LINE 1024 // Maximum length of command
-#define MAX_ARGS 128  // Maximum number of arguments
+#define MAX_LINE 1024 /* Maximum length of command */
+#define MAX_ARGS 128  /* Maximum number of arguments */
 
 void shell_none_interactive(void);
 
@@ -35,6 +35,7 @@ void shell_none_interactive(void)
 {
     char line[MAX_LINE];
     char *args[MAX_ARGS + 1]; /* Additional slot for NULL terminator */
+    pid_t pid;
 
     /* Read input from stdin until EOF */
     ssize_t bytes_read;
@@ -53,7 +54,7 @@ void shell_none_interactive(void)
         }
 
         /* Fork a child process to execute the command */
-        pid_t pid = fork();
+        pid = fork();
         if (pid < 0) {
             perror("fork");
             exit(EXIT_FAILURE);

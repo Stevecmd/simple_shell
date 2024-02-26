@@ -2,6 +2,7 @@
 #define _SPLIT_LINES_
 
 #include "shell.h"
+#include <string.h>
 
 /**
 * split_line - Split a string into multiple tokens.
@@ -16,12 +17,15 @@
  * Auth: Steve Murimi
  */
 
+#define TOK_DELIM " \t\n"
+
 char **split_line(char *line)
 {
 	int bufsize = 64;            /* Initial size of the tokens array */
 	int i = 0;                   /* Index for tokens array */
 	char **tokens = malloc(bufsize * sizeof(char *));  /* Allocate memory for tokens array */
 	char *token;                 /* Pointer to store each token */
+	char **temp;                 /* Temporary pointer for realloc */
 
 	/* Check if memory allocation for tokens array was successful */
 	if (!tokens)
@@ -48,7 +52,7 @@ char **split_line(char *line)
 		if (i >= bufsize)
 		{
 			bufsize += bufsize;   /* Double the buffer size */
-			char **temp = realloc(tokens, bufsize * sizeof(char *));  // Resize tokens array
+			temp = realloc(tokens, bufsize * sizeof(char *));
 			/* Check if memory reallocation was successful */
 			if (!temp)
 			{

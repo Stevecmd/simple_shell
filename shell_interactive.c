@@ -59,10 +59,12 @@ void shell_interactive(void) {
 
         /* Handle built-in commands */
         if (strcmp(args[0], "exit") == 0) {
-            should_run = 0; // Exit the shell
+            should_run = 0; /* Exit the shell */
         } else {
             /* Fork a child process to execute the command */
-            pid_t pid = fork();
+            pid_t pid;
+
+            pid = fork();
             if (pid < 0) {
                 perror("fork");
             } else if (pid == 0) {
