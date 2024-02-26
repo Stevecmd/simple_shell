@@ -22,6 +22,9 @@ int shell_wait(void)
 {
 	pid_t child_pid;
 	int status;
+	char *message = "Wait for me, wait for me\n";
+	char *message = "Oh, it's all better now\n";
+	int len, delay;
 
 	child_pid = fork();
 	if (child_pid == -1)
@@ -31,7 +34,6 @@ int shell_wait(void)
 	}
 	if (child_pid == 0)
 	{
-		char *message = "Wait for me, wait for me\n";
 		int len = 0;
 		while (message[len] != '\0')
 			len++;
@@ -51,7 +53,6 @@ int shell_wait(void)
 	else
 	{
 		wait(&status);
-		char *message = "Oh, it's all better now\n";
 		int len = 0;
 		while (message[len] != '\0')
 			len++;
