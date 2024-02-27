@@ -44,7 +44,7 @@ int own_cd(char **args) {
     return 1; /* Return 1 to continue shell loop */
 }
 
-int own_env(void) {
+int own_env(char **args) {
     char **env = environ;
     char newline = '\n';
 
@@ -57,7 +57,7 @@ int own_env(void) {
     return 1;
 }
 
-int own_help(void) {
+int own_help(char **args) {
     char *help_msg = "Simple Shell Help\n"
                      "Available commands:\n"
                      "1. cd <directory>: Change the current directory\n"
@@ -70,7 +70,7 @@ int own_help(void) {
     return 1;
 }
 
-int own_exit(void) {
+int own_exit(char **args) {
     exit(EXIT_SUCCESS);
 }
 
