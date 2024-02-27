@@ -24,28 +24,29 @@
 
 char *read_stream(void)
 {
-    int bufsize = INITIAL_BUF_SIZE;
-    int i = 0;
-    char *line = malloc(sizeof(char) * bufsize);
+	int bufsize = INITIAL_BUF_SIZE;
+	int i = 0;
+	char *line = malloc(sizeof(char) * bufsize);
 
-    if (line == NULL)
-    {
-        perror("Read_stream: Allocation error\n");
-        exit(EXIT_FAILURE);
-    }
+	if (line == NULL)
+	{
+		perror("Read_stream: Allocation error\n");
+		exit(EXIT_FAILURE);
+	}
 
-    while (1)
-    {
-        char character = getchar();
-        if (character == EOF || character == '\n')
-        {
-            line[i] = '\0';
-            return line;
-        }
-        line[i] = character;
-        i = handle_buffer_resize(line, i, &bufsize);
-        i++;
-    }
+	while (1)
+	{
+		char character = getchar();
+
+		if (character == EOF || character == '\n')
+		{
+			line[i] = '\0';
+			return (line);
+		}
+		line[i] = character;
+		i = handle_buffer_resize(line, i, &bufsize);
+		i++;
+	}
 }
 
 /**
@@ -61,20 +62,21 @@ char *read_stream(void)
  */
 int handle_buffer_resize(char *line, int i, int *bufsize)
 {
-    char *temp;
-    if (i >= *bufsize - 1)
-    {
-        *bufsize += BUF_SIZE_INCREMENT;
-        temp = realloc(line, *bufsize);
-        if (temp == NULL)
-        {
-            perror("Read_stream: Reallocation error\n");
-            free(line);
-            exit(EXIT_FAILURE);
-        }
-        line = temp;
-    }
-    return i;
+	char *temp;
+
+	if (i >= *bufsize - 1)
+	{
+		*bufsize += BUF_SIZE_INCREMENT;
+		temp = realloc(line, *bufsize);
+		if (temp == NULL)
+		{
+			perror("Read_stream: Reallocation error\n");
+			free(line);
+			exit(EXIT_FAILURE);
+		}
+		line = temp;
+	}
+	return (i);
 }
 
 #endif /* _READ_STREAM_ */
