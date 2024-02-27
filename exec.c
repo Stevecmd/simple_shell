@@ -9,7 +9,7 @@
 * execute_command - executes a command using execve.
 * This function attempts to execute a command
 * using the execve system call.
-* 
+*
 * The command to be executed is "/bin/ls" with arguments "-l" and "/usr/".
 *
 * Return: 0 on success, -1 on failure.
@@ -28,6 +28,7 @@ int execute_command(void)
 	if (execve(argv[0], argv, NULL) == -1)
 	{
 		char *error_message = "Error: Unable to execute command\n";
+
 		write(STDERR_FILENO, error_message, strlen(error_message));
 		exit(EXIT_FAILURE);
 	}

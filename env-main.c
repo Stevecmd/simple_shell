@@ -12,7 +12,7 @@
 * This function prints out the environment variables of
 * the current process.
 * It iterates through the array of environment
-* variables, printing each one. 
+* variables, printing each one.
 *
 * Return: Always 0 - success.
 */
@@ -31,6 +31,7 @@ void print_environment(void)
 	while (environ[i] != NULL)
 	{
 		size_t len = strlen(environ[i]);
+
 		write(STDOUT_FILENO, environ[i], len);
 		write(STDOUT_FILENO, "\n", 1);
 		i++;
