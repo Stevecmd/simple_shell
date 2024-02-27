@@ -45,6 +45,7 @@ int own_cd(char **args) {
 }
 
 int own_env(char **args) {
+    (void)args;
     char **env = environ;
     char newline = '\n';
 
@@ -58,6 +59,7 @@ int own_env(char **args) {
 }
 
 int own_help(char **args) {
+    (void)args;
     char *help_msg = "Simple Shell Help\n"
                      "Available commands:\n"
                      "1. cd <directory>: Change the current directory\n"
@@ -71,6 +73,7 @@ int own_help(char **args) {
 }
 
 int own_exit(char **args) {
+    (void)args;
     exit(EXIT_SUCCESS);
 }
 
