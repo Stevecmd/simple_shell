@@ -34,81 +34,50 @@
 
 int execute_args(char **args)
 {
-	if (args == NULL)
-	{
-		perror("Execute_args: Null argument");
-		return (0);
-	}
+int i = 0;
+int status;
+pid_t pid;
 
-	if (args[0] == NULL)
-	{
-		perror("Execute_args: Empty command");
-		return (-1);
-	}
-
-	return (execute_builtin(args) || execute_external(args));
-}
-
-/**
- * execute_builtin - Execute a built-in command.
- *
- * This function searches for the given
- * command in the list of built-in commands
- * and executes the corresponding function if found.
- *
- * @args: The command and its arguments.
- *
- * Return: 1 if the command is a built-in and
- * was executed successfully, 0 otherwise.
- */
-
-int execute_builtin(char **args)
+/* Check if args is NULL */
+if (args == NULL)
 {
-	int i;
-
-	for (i = 0; i < num_builtins; i++)
-	{
-		if (strcmp(args[0], builtin_func_list[i]) == 0)
-		{
-			return ((*builtin_func[i])(args));
-		}
-	}
-
+	perror("Execute_args: Null argument");
 	return (0);
 }
 
-/**
- * execute_external - Execute an external command.
- *
- * This function forks a new process to execute
- * an external command using execve,
- * and waits for the child process to finish.
- *
- * @args: The command and its arguments.
- *
- * Return: 0 on success.
- */
-
-int execute_external(char **args)
+/* Check if the command is empty */
+if (args[0] == NULL)
 {
-	int status;
-	pid_t pid = fork();
+	perror("Execute_args: Empty command");
+	return (-1);
+}
 
+/* Find if the command is a builtin */
+for (i = 0; i < num_builtins; i++)
+{
+	/* If there is a match, execute the builtin command */
+	if (strcmp(args[0], builtin_func_list[i]) == 0)
+	{
+	return ((*builtin_func[i])(args));
+	}
+}
+	/* If the command is not a builtin, execute it as an external process */
+	pid = fork();
 	if (pid < 0)
 	{
 		perror("Execute_args: fork");
 		exit(EXIT_FAILURE);
-	}
-	else if (pid == 0)
+	} else if (pid == 0)
 	{
+		/* Child process */
 		if (execve(args[0], args, NULL) == -1)
 		{
 			perror("Execute_args: execve");
 			_exit(EXIT_FAILURE);
 		}
-	}
-	else
+	} else
 	{
+		/* Parent process */
 		do {
 			if (waitpid(pid, &status, WUNTRACED) == -1)
 			{
@@ -117,7 +86,6 @@ int execute_external(char **args)
 			}
 		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}
-
 	return (0);
 }
 #endif /* _EXECUTE_ARGS_*/

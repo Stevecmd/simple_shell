@@ -44,6 +44,8 @@ int execute_command(void);
 /* execute_args.c*/
 int execute_args(char **args);
 extern int num_builtins;
+int execute_builtin(char **args);
+int execute_external(char **args);
 
 /* fork.c */
 int forking(void);
