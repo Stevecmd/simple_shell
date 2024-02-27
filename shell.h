@@ -22,13 +22,15 @@
 /* Function declarations */
 
 /* builtin.c */
-/* char *builtin_func_list[]; */
-/* int (*builtin_func[])(char **); */
-/* Declare builtin function list and function pointers */
-extern char *builtin_func_list[];
-extern int (*builtin_func[])(char **);
+int own_cd(char **args);
+int own_env(void);
+int own_help(void);
+int own_exit(void);
 
 /* builtin1.c */
+void int_to_string(char *str, int num);
+
+/* common.c */
 void int_to_string(char *str, int num);
 
 /* env-environ */
@@ -86,6 +88,5 @@ int shell_stat(int argc, char *argv[]);
 
 /* wait.c */
 int shell_wait(void);
-
 
 #endif /* _SHELL_H_ */

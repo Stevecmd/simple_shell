@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <unistd.h>
+#include <sys/types.h>
 
 /**
 * get_process_identifier - Retrieves and prints the unique

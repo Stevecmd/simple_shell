@@ -3,6 +3,7 @@
 
 #include <unistd.h>
 #include <stdlib.h>
+#include <sys/types.h>
 
 /**
 * get_parent_process_identifier - Retrieves the parent process ID (PPID).
