@@ -255,6 +255,7 @@ Run: './shell'
 You should be able to interact with the interactive and non-interactive shells
 
 Allowed functions:
+```
     access
     chdir 
     close 
@@ -286,3 +287,10 @@ Allowed functions:
     wait3 
     wait4 
     write 
+```
+Testing and debugging: <br />
+Testing the builtins
+```sh
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -c builtin.c -o builtin.o
+```
+

@@ -22,10 +22,7 @@
 /* Function declarations */
 
 /* builtin.c */
-int own_cd(char **args);
-int own_env(void);
-int own_help(void);
-int own_exit(void);
+
 
 /* builtin1.c */
 void int_to_string(char *str, int num);
