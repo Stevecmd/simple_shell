@@ -28,7 +28,7 @@
 void int_to_string(char *str, int num);
 
 /* common.c */
-void int_to_string(char *str, int num);
+/* void int_to_string(char *str, int num);*/
 
 /* env-environ */
 int environment(char **env);
@@ -41,6 +41,7 @@ int execute_command(void);
 
 /* execute_args.c*/
 int execute_args(char **args);
+extern int num_builtins;
 
 /* fork.c */
 int forking(void);

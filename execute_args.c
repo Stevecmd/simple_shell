@@ -4,7 +4,6 @@
 #include "shell.h"
 #include <string.h>
 #include "builtin.h"
-#include "builtin.c"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>

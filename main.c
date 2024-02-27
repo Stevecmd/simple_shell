@@ -3,7 +3,6 @@
 
 #include <stdbool.h> /* For boolean type */
 
-#include "prompt.c"
 #include "shell.h"
 
 /*

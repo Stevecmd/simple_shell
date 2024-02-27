@@ -14,8 +14,6 @@
  */
 
 /* Function declarations for common functions */
-void display_menu(void);
-int read_choice(void);
 void int_to_string(char *str, int num);
 
 #endif /* _COMMON_H_ */
