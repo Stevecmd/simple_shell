@@ -1,6 +1,7 @@
 #ifndef _ENV_MAIN_
 #define _ENV_MAIN_
 
+#include "shell.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -22,7 +23,6 @@
  * Auth: Steve Murimi
  */
 
-extern char **environ;
 
 void print_environment(void)
 {

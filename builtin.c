@@ -6,13 +6,12 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include "builtin.h"
+#include "shell.h"
 
 /*
  * File: builtin.c
  * Auth: Steve Murimi
  */
-
-extern char **environ; /* Declare environmental variable */
 
 char *builtin_func_list[] = {
 	"cd",

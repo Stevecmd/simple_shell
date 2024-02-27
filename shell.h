@@ -22,6 +22,7 @@
 /* Function declarations */
 
 /* builtin.c */
+extern char **environ;
 
 
 /* builtin1.c */
@@ -35,6 +36,7 @@ int environment(char **env);
 
 /* env-main */
 void print_environment(void);
+extern char **environ;
 
 /* exec */
 int execute_command(void);
