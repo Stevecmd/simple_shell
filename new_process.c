@@ -23,7 +23,8 @@ int new_process(char **args)
 	/* Fork a new process */
 	pid = fork();
 
-	if (pid == 0) {
+	if (pid == 0)
+	{
 		/* Child process */
 		if (execvp(args[0], args) == -1)
 		{
@@ -31,20 +32,23 @@ int new_process(char **args)
 			perror("new_process: execvp");
 			exit(EXIT_FAILURE);
 		}
-	} else if (pid < 0) {
+	} else if (pid < 0)
+	{
 		/* Error forking */
 		perror("new_process: fork");
-		return -1;
-	} else {
-		/* Parent process */
-		do {
-		/* Wait for the child process to terminate */
-			if (waitpid(pid, &status, WUNTRACED) == -1) {
-				perror("new_process: waitpid");
-				return -1;
-			}
-		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
+		return (-1);
 	}
+
+		/* Parent process */
+	do {
+	/* Wait for the child process to terminate */
+		if (waitpid(pid, &status, WUNTRACED) == -1)
+		{
+			perror("new_process: waitpid");
+			return (-1);
+		}
+	} while (!WIFEXITED(status) && !WIFSIGNALED(status));
+
 return (0); /* Success */
 }
 

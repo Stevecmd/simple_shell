@@ -32,7 +32,8 @@
  * Auth: Steve Murimi
  */
 
-int execute_args(char **args){
+int execute_args(char **args)
+{
 int i = 0;
 int status;
 pid_t pid;
@@ -62,19 +63,24 @@ for (i = 0; i < num_builtins; i++)
 }
 	/* If the command is not a builtin, execute it as an external process */
 	pid = fork();
-	if (pid < 0) {
+	if (pid < 0)
+	{
 		perror("Execute_args: fork");
 		exit(EXIT_FAILURE);
-	} else if (pid == 0) {
+	} else if (pid == 0)
+	{
 		/* Child process */
-		if (execve(args[0], args, NULL) == -1) {
+		if (execve(args[0], args, NULL) == -1)
+		{
 			perror("Execute_args: execve");
 			_exit(EXIT_FAILURE);
 		}
-	} else {
+	} else
+	{
 		/* Parent process */
 		do {
-			if (waitpid(pid, &status, WUNTRACED) == -1) {
+			if (waitpid(pid, &status, WUNTRACED) == -1)
+			{
 				perror("Execute_args: waitpid");
 				exit(EXIT_FAILURE);
 			}

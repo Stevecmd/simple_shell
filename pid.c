@@ -27,7 +27,7 @@ int get_process_identifier(void)
 	char pid_buffer[20];
 
 	my_pid = getpid();
-    
+
 	/* Convert process ID to a string */
 	temp_pid = my_pid;
 
@@ -39,7 +39,8 @@ int get_process_identifier(void)
 
 	/* Convert digits to string */
 	temp_pid = my_pid;
-	for (i = digits - 1; i >= 0; i--) {
+	for (i = digits - 1; i >= 0; i--)
+	{
 		pid_buffer[i] = (temp_pid % 10) + '0';
 		temp_pid /= 10;
 	}

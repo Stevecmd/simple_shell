@@ -40,7 +40,7 @@ int forking(void)
 	int_to_string(my_pid_str, my_pid);
 	write(STDOUT_FILENO, "My pid is ", 10);
 	write(STDOUT_FILENO, my_pid_str, strlen(my_pid_str));
-	write(STDOUT_FILENO, "\n", 1);	
+	write(STDOUT_FILENO, "\n", 1);
 
 	if (pid == -1)
 	{

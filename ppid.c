@@ -39,13 +39,15 @@ int get_parent_process_identifier(void)
 	/* Convert digits to string */
 	temp_ppid = my_ppid;
 
-	for (i = digits - 1; i >= 0; i--) {
+	for (i = digits - 1; i >= 0; i--)
+	{
 		ppid_buffer[i] = (temp_ppid % 10) + '0';
 		temp_ppid /= 10;
 	}
 
 	/* Write PPID to STDOUT */
-	if (write(STDOUT_FILENO, ppid_buffer, digits) != digits) {
+	if (write(STDOUT_FILENO, ppid_buffer, digits) != digits)
+	{
 		/* Error writing to STDOUT */
 		exit(EXIT_FAILURE);
 	}
