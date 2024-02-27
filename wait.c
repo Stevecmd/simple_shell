@@ -37,7 +37,7 @@ int shell_wait(void)
 		len = 0;
 		while (message[len] != '\0')
 			len++;
-		
+
 		write(STDOUT_FILENO, message, len);
 
 		delay = 3;

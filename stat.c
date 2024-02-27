@@ -33,7 +33,8 @@ int shell_stat(int argc, char *argv[])
 	const char *filename;
 
 	/* Check if the correct number of arguments is provided */
-	if (argc != 2) {
+	if (argc != 2)
+	{
 		perror("Usage: stat <filename>");
 		exit(EXIT_FAILURE);
 	}
@@ -42,7 +43,8 @@ int shell_stat(int argc, char *argv[])
 	filename = argv[1];
 
 	/* Retrieve file information using stat */
-	if (stat(filename, &st) == -1) {
+	if (stat(filename, &st) == -1)
+	{
 		perror("stat");
 		exit(EXIT_FAILURE);
 	}
@@ -52,13 +54,14 @@ int shell_stat(int argc, char *argv[])
 
 
 	/* Print each character of the filename */
-	for (i = 0; filename[i] != '\0'; i++) {
+	for (i = 0; filename[i] != '\0'; i++)
+	{
 		write(STDOUT_FILENO, &filename[i], 1);
 	}
-	
+
 	write(STDOUT_FILENO, "\n", 1);
 
-	return 0;
+	return (0);
 }
 
 #endif /* _STAT_ */

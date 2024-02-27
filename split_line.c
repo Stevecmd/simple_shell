@@ -3,13 +3,84 @@
 
 #include "shell.h"
 #include <string.h>
+#define TOK_DELIM " \t\n"
+
+/**
+ * handle_allocation_error - Helper function to
+ *							handle memory allocation errors.
+ */
+
+static void handle_allocation_error(void)
+{
+	perror("split_line: allocation error for tokens");
+	exit(EXIT_FAILURE);
+}
+
+/**
+ * handle_reallocation_error - Helper function to handle reallocation errors.
+ */
+
+static void handle_reallocation_error(void)
+{
+	perror("split_line: reallocation error for tokens");
+	exit(EXIT_FAILURE);
+}
+
+/**
+ * tokenize_line - Helper function to tokenize the input line.
+ * @line: The string to be tokenized.
+ *
+ * Return: A pointer to an array of tokens.
+ */
+
+static char **tokenize_line(char *line)
+{
+	int bufsize = 64;
+	int i = 0;
+	char *token;
+	char **tokens = malloc(bufsize * sizeof(char *));
+	char **temp;
+
+	if (!tokens)
+	{
+		handle_allocation_error();
+	}
+
+	token = strtok(line, TOK_DELIM);
+
+	while (token != NULL)
+	{
+		if (token[0] == '#')
+		{
+			break;
+		}
+		tokens[i++] = token;
+
+
+		if (i >= bufsize)
+		{
+			bufsize += bufsize;
+			temp = realloc(tokens, bufsize * sizeof(char *));
+
+			if (!temp)
+				handle_reallocation_error();
+
+			tokens = temp;
+		}
+		token = strtok(NULL, TOK_DELIM);
+	}
+
+	tokens[i] = NULL;
+	return (tokens);
+}
 
 /**
 * split_line - Split a string into multiple tokens.
 * @line: The string to be split.
 *
 * Return: A pointer to an array of tokens.
-*         Returns NULL if memory allocation fails or if the input line is empty.
+*         Returns NULL if memory allocation
+*			fails or if the input line is empty.
 */
 
 /*
@@ -17,57 +88,13 @@
  * Auth: Steve Murimi
  */
 
-#define TOK_DELIM " \t\n"
-
 char **split_line(char *line)
+
 {
-	int bufsize = 64;            /* Initial size of the tokens array */
-	int i = 0;                   /* Index for tokens array */
-	char **tokens = malloc(bufsize * sizeof(char *));  /* Allocate memory for tokens array */
-	char *token;                 /* Pointer to store each token */
-	char **temp;                 /* Temporary pointer for realloc */
+	char **tokens = tokenize_line(line);
 
-	/* Check if memory allocation for tokens array was successful */
-	if (!tokens)
-	{
-		write(STDERR_FILENO, "split_line: allocation error for tokens\n", 40);
-		_exit(EXIT_FAILURE);
-	}
+	return (tokens);
 
-	/* Tokenize the input line using strtok */
-	token = strtok(line, TOK_DELIM);
-	while (token != NULL)
-	{
-		/* Check if token is a comment (starts with '#'), and ignore it */
-		if (token[0] == '#')
-		{
-			break;
-		}
-
-		/* Store token in tokens array */
-		tokens[i] = token;
-		i++;
-
-		/* Check if tokens array needs to be resized */
-		if (i >= bufsize)
-		{
-			bufsize += bufsize;   /* Double the buffer size */
-			temp = realloc(tokens, bufsize * sizeof(char *));
-			/* Check if memory reallocation was successful */
-			if (!temp)
-			{
-				write(STDERR_FILENO, "split_line: reallocation error for tokens\n", 43);
-				_exit(EXIT_FAILURE);
-			}
-			tokens = temp;
-		}
-
-		/* Get next token */
-		token = strtok(NULL, TOK_DELIM);
-	}
-
-	tokens[i] = NULL;  /* Null-terminate the tokens array */
-	return tokens;     /* Return the tokens array */
 }
 
 #endif /* _SPLIT_LINES_ */
