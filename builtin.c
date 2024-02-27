@@ -29,38 +29,72 @@ int (*builtin_func[])(char **) = {
 };
 int num_builtins = sizeof(builtin_func_list) / sizeof(builtin_func_list[0]);
 
-int own_cd(char **args) {
-	if (args[1] == NULL) {
+/**
+ * own_cd - Change the current directory.
+ * @args: A pointer to an array of strings containing command arguments.
+ *		args[0] should be the command itself,
+ *		and args[1] should be the directory path.
+ *
+ * Return: 1 to continue the shell loop.
+ *
+ */
+
+int own_cd(char **args)
+{
+	if (args[1] == NULL)
+	{
 		/* No directory specified, go to home directory */
-		if (chdir(getenv("HOME")) != 0) {
+		if (chdir(getenv("HOME")) != 0)
+		{
 			perror("cd");
 		}
-	} else {
+	} else
+	{
 		/* Change to the specified directory */
-		if (chdir(args[1]) != 0) {
+		if (chdir(args[1]) != 0)
+		{
 			perror("cd");
 		}
 	}
-	return 1; /* Return 1 to continue shell loop */
+	return (1); /* Return 1 to continue shell loop */
 }
 
-int own_env(char **args) {
+/**
+ * own_env - Display the environment variables.
+ * @args: A pointer to an array of strings containing command arguments.
+ *         This function does not use the args parameter.
+ *
+ * Return: 1 to continue the shell loop.
+ */
+
+int own_env(char **args)
+{
 	char **env = environ;
 	char newline = '\n';
 
 	env = environ;
 
-	while (*env != NULL) {
+	while (*env != NULL)
+	{
 		write(STDOUT_FILENO, *env, strlen(*env));
 		write(STDOUT_FILENO, &newline, 1);
 		env++;
 	}
 
 	(void)args;
-	return 1;
+	return (1);
 }
 
-int own_help(char **args) {
+/**
+ * own_help - Display help information for the shell.
+ * @args: A pointer to an array of strings containing command arguments.
+ *		This function does not use the args parameter.
+ *
+ * Return: 1 to continue the shell loop.
+ */
+
+int own_help(char **args)
+{
 
 	char *help_msg = "Simple Shell Help\n"
 					 "Available commands:\n"
@@ -72,10 +106,19 @@ int own_help(char **args) {
 	write(STDOUT_FILENO, help_msg, strlen(help_msg));
 
 	(void)args;
-	return 1;
+	return (1);
 }
 
-int own_exit(char **args) {
+/**
+ * own_exit - Exit the shell.
+ * @args: A pointer to an array of strings containing command arguments.
+ *			This function does not use the args parameter.
+ *
+ * Return: This function does not return.
+ */
+
+int own_exit(char **args)
+{
 	(void)args;
 	exit(EXIT_SUCCESS);
 }
