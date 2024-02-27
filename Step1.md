@@ -7,7 +7,7 @@ main.c
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h> // For boolean type
+#include <stdbool.h>
 #include <unistd.h>
 
 #include "shell.h"
