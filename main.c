@@ -1,43 +1,52 @@
-#ifndef _MAIN_
-#define _MAIN_
-
-#include <stdbool.h> /* For boolean type */
+#ifndef __MAIN__
+#define __MAIN__
 
 #include "shell.h"
 
 /**
-* main - This is the main entry point of the program.
-*
-* Return: 1 on success, 0 on failure.
-*/
-/*
- * File: main.c
- * Auth: Steve Murimi
+ * main - This is the entry point for the program.
+ * Parses command line arguments, initializes info_t structure,
+ * and executes specified command.
+ *
+ * @ac: Number of command line arguments.
+ * @av: Array of command line arguments.
+ *
+ * Return: 0 on success, otherwise exit failure.
  */
-
-int main(void)
+int main(int ac, char **av)
 {
-	int choice;
-	bool valid_choice = false;
+	info_t info[] = { INFO_INIT };
+	int fd = 2;
 
-	do {
-		display_menu();
-		choice = read_choice();
-		if (choice != -1)
+	asm ("mov %1, %0\n\t"
+		"add $3, %0"
+		: "=r" (fd)
+		: "r" (fd));
+
+	if (ac == 2)
+	{
+		fd = open(av[1], O_RDONLY);
+		if (fd == -1)
 		{
-			valid_choice = true;
+			if (errno == EACCES)
+				exit(126);
+			if (errno == ENOENT)
+			{
+				print_error_message(av[0]);
+				print_error_message(": 0: Can't open ");
+				print_error_message(av[1]);
+				write_char_to_error_buffer('\n');
+				write_char_to_error_buffer(BUFFER_FLUSH);
+				exit(127);
+			}
+			return (EXIT_FAILURE);
 		}
-	} while (!valid_choice);
-
-	/* Execute the selected shell mode */
-	if (choice == 1)
-	{
-		shell_interactive(); /* Execute interactive shell */
-	} else
-	{
-		shell_none_interactive(); /* Execute non-interactive shell */
+		info->readfd = fd;
 	}
-	return (0);
+	populate_env_list(info);
+	read_history(info);
+	run_shell(info, av);
+	return (EXIT_SUCCESS);
 }
 
-#endif /* _MAIN_ */
+#endif /* __MAIN__ */
