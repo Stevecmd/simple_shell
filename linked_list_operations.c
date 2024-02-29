@@ -49,7 +49,8 @@ list_t *add_node_to_linked_list(list_t **head, const char *str, int num)
 }
 
 /**
- * add_node_to_end_of_linked_list - Adds a new node at the end of a linked list.
+ * add_node_to_end_of_linked_list - Adds a new node at
+ * the end of a linked list.
  * @head: Pointer to the pointer to the head of the list.
  * @str: String to be stored in the new node.
  * @num: Integer value to be stored in the new node.

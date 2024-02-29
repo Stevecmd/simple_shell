@@ -13,7 +13,8 @@
  * in reading input or the user exits the shell.
  * Within each iteration, it clears the info structure,
  * prompts the user if in interactive mode, reads input,
- * sets up the info structure, identifies built-in commands or external commands,
+ * sets up the info structure, identifies built-in
+ * commands or external commands,
  * and executes them accordingly. After each iteration, it frees the
  * allocated memory. It also handles the writing
  * of command history and exits the shell appropriately
@@ -21,7 +22,8 @@
  *
  * @info: Pointer to the info_t structure containing
  * command-related information.
- * @command_line_arguments: Array of strings representing command-line arguments.
+ * @command_line_arguments: Array of strings representing
+ * command-line arguments.
  *
  * Return: The exit status of the last executed command or built-in function.
  */

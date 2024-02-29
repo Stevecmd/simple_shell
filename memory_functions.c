@@ -9,9 +9,9 @@
  * This function fills the first n bytes of the
  * memory area pointed to by s with the constant byte b.
  *
- * @s: Pointer to the memory area to be filled.
- * @b: The constant byte to fill the memory area with.
- * @n: The number of bytes to be filled.
+ * @dest: Pointer to the memory area to be filled.
+ * @value: The constant byte to fill the memory area with.
+ * @size: The number of bytes to be filled.
  *
  * Return: Pointer to the memory area s.
  */

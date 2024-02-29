@@ -5,7 +5,7 @@
 
 /**
  * list_length - calculates the length of a linked list.
- * @@head: A pointer to the head of the linked list.
+ * @head: A pointer to the head of the linked list.
  *
  * This function traverses the given linked list and counts
  * the number of elements it contains.
@@ -78,7 +78,7 @@ char **list_to_strings(list_t *head)
 }
 
 /**
- * free_linked_list - frees memory allocated for a linked list.
+ * free_list - frees memory allocated for a linked list.
  * @head_ptr: Pointer to the pointer of the head of the list.
  *
  * This function takes a pointer to the head of a linked list

@@ -38,7 +38,8 @@ void set_info(info_t *info, char **command_line_arguments)
 				info->argv[1] = NULL;
 			}
 		}
-		for (argument_count = 0; info->argv && info->argv[argument_count ]; argument_count ++)
+		for (argument_count = 0; info->argv &&
+			info->argv[argument_count]; argument_count++)
 			;
 		info->argc = argument_count;
 

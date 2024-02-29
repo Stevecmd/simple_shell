@@ -29,8 +29,8 @@ int is_delimiter(char character, char *delimiter_set)
 
 /**
  * strtow - Splits a string into words based on given delimiters.
- * @str: The string to split.
- * @delims: A string containing delimiter characters.
+ * @input_string: The string to split.
+ * @delimiters: A string containing delimiter characters.
  *
  * This function splits the input string @str into words, using the characters
  * specified in @delims as delimiters. It dynamically allocates memory for the
@@ -52,7 +52,8 @@ char **strtow(char *input_string, char *delimiters)
 		delimiters = " ";
 
 	for (i = 0; input_string[i] != '\0'; i++)
-		if (!is_delimiter(input_string[i], delimiters) && (is_delimiter(input_string[i + 1], delimiters) || !input_string[i + 1]))
+		if (!is_delimiter(input_string[i], delimiters) &&
+			(is_delimiter(input_string[i + 1], delimiters) || !input_string[i + 1]))
 			numwords++;
 
 	if (numwords == 0)

@@ -25,8 +25,8 @@ int change_directory(info_t *info)
 	{
 		dir = retrieve_environment_variable_value(info, "HOME=");
 		if (!dir)
-			chdir_ret =
-				chdir((dir = retrieve_environment_variable_value(info, "PWD=")) ? dir : "/");
+			chdir_ret =	chdir(
+					(dir = retrieve_environment_variable_value(info, "PWD=")) ? dir : "/");
 		else
 			chdir_ret = chdir(dir);
 	}
@@ -40,7 +40,8 @@ int change_directory(info_t *info)
 		}
 		_puts(retrieve_environment_variable_value(info, "OLDPWD=")), _putchar('\n');
 		chdir_ret =
-			chdir((dir = retrieve_environment_variable_value(info, "OLDPWD=")) ? dir : "/");
+			chdir(
+				(dir = retrieve_environment_variable_value(info, "OLDPWD=")) ? dir : "/");
 	}
 	else
 		chdir_ret = chdir(info->argv[1]);

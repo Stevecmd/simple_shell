@@ -22,7 +22,8 @@
  * Return: On success, the number of bytes read is returned.
  * On failure, -1 is returned and errno is set appropriately.
  */
-ssize_t read_from_file_descriptor(info_t *file_info, char *buffer, size_t *bytes_read)
+ssize_t read_from_file_descriptor(
+		info_t *file_info, char *buffer, size_t *bytes_read)
 {
 	ssize_t bytes_read_now = 0;
 
@@ -136,7 +137,8 @@ void free_info(info_t *info, int all)
  * the linked list pointed to by the 'env' member of the structure with the
  * environment variables of the current process. It iterates through the array
  * of environment variables until it encounters a NULL terminator, adding each
- * variable to the end of the linked list using the add_node_to_end_of_linked_list
+ * variable to the end of the linked list using the
+ * add_node_to_end_of_linked_list
  * function.
  * @info: A pointer to an info_t structure where the environment variables
  * will be stored.

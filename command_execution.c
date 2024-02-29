@@ -4,7 +4,8 @@
 #include "shell.h"
 
 /**
- * check_if_path_corresponds_to_known_command - checks if a given path corresponds to a known command.
+ * check_if_path_corresponds_to_known_command -
+ * checks if a given path corresponds to a known command.
  *
  * This function checks whether the provided path corresponds to a
  * known command in the system.
@@ -23,7 +24,8 @@
  *
  * Return: 1 if the command is known, 0 otherwise.
  */
-int check_if_path_corresponds_to_known_command(info_t *command_info, char *command_path)
+int check_if_path_corresponds_to_known_command(
+		info_t *command_info, char *command_path)
 {
 	struct stat file_stat;
 
@@ -47,7 +49,7 @@ int check_if_path_corresponds_to_known_command(info_t *command_info, char *comma
  *
  * This function searches for the executable file corresponding to
  * the given command within the directories listed in 'pathstr'.
- * It first checks if 'cmd' is a known command in the current environment. 
+ * It first checks if 'cmd' is a known command in the current environment.
  * If 'cmd' starts with "./",
  * it checks if it's a known command directly.
  * Otherwise, it iterates through each directory in 'pathstr'
@@ -123,7 +125,8 @@ void find_cmd(info_t *info)
 	if (!k)
 		return;
 
-	path = find_path(info, retrieve_environment_variable_value(info, "PATH="), info->argv[0]);
+	path = find_path(info, retrieve_environment_variable_value(
+			info, "PATH="), info->argv[0]);
 
 	if (path)
 	{
@@ -132,8 +135,10 @@ void find_cmd(info_t *info)
 	}
 	else
 	{
-		if ((is_interactive_mode(info) || retrieve_environment_variable_value(info, "PATH=") ||
-		     info->argv[0][0] == '/') && check_if_path_corresponds_to_known_command(info, info->argv[0]))
+		if ((is_interactive_mode(info) ||
+			retrieve_environment_variable_value(info, "PATH=") ||
+		     info->argv[0][0] == '/') &&
+				check_if_path_corresponds_to_known_command(info, info->argv[0]))
 			fork_command(info);
 		else if (*(info->arg) != '\n')
 		{
@@ -164,7 +169,8 @@ void handle_sigint(__attribute__((unused))int signal_number)
 }
 
 /**
- * read_input_buffer - Reads input from the standard input stream and processes it.
+ * read_input_buffer - Reads input from the standard
+ * input stream and processes it.
  * @info: A pointer to the info_t structure containing various information.
  * @buffer: A pointer to a pointer to the input buffer.
  * @length: A pointer to the size of the input buffer.
@@ -199,7 +205,7 @@ ssize_t read_input_buffer(info_t *info, char **buffer, size_t *length)
 			remove_comments_from_string_buffer(*buffer);
 			build_history_list(info, *buffer, info->history_count++);
 			{
-				*length = read_bytes ;
+				*length = read_bytes;
 				info->command_buf = buffer;
 			}
 		}

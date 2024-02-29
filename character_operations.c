@@ -16,7 +16,8 @@
 int is_alpha(int character)
 {
 	/* Return 1 to indicate that the character is alphabetic */
-	if ((character >= 'a' && character <= 'z') || (character >= 'A' && character <= 'Z'))
+	if ((character >= 'a' && character <= 'z')
+		|| (character >= 'A' && character <= 'Z'))
 	{
 		return (1);
 	}

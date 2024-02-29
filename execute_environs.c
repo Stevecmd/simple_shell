@@ -4,7 +4,8 @@
 #include "shell.h"
 
 /**
- * retrieve_environment_variable_value - retrieves the value of a specific environment variable.
+ * retrieve_environment_variable_value - retrieves the value
+ * of a specific environment variable.
  *
  * This function searches for the environment variable with the specified name
  * within the provided list of environment variables. It iterates through
@@ -14,14 +15,16 @@
  * value of the variable.
  * If no match is found, NULL is returned.
  *
- * @environment_info: A pointer to the structure containing environment variables.
+ * @environment_info: A pointer to the structure containing
+ * environment variables.
  * @variable_name: The identifier of the environment variable to retrieve.
  *
  * Return: Upon success, a pointer to the value of the
  * specified environment variable.
  * If the specified environment variable is not found, NULL is returned.
  */
-char *retrieve_environment_variable_value(info_t *environment_info, const char *variable_name)
+char *retrieve_environment_variable_value(
+		info_t *environment_info, const char *variable_name)
 {
 	list_t *current_node = environment_info->env;
 	char *variable_value;
@@ -37,13 +40,14 @@ char *retrieve_environment_variable_value(info_t *environment_info, const char *
 }
 
 /**
- * set_or_update_environment_variable - sets or updates an environment variable.
+ * set_or_update_environment_variable - sets or
+ * updates an environment variable.
  * This function sets or updates an environment variable in the
  * current process.
  * It allocates memory to construct the environment variable string
  * in the format "name=value".
- * If either @variable_name or @variable_value is NULL, the function returns without
- * modifying the environment.
+ * If either @variable_name or @variable_value is NULL,
+ * the function returns without modifying the environment.
  * If memory allocation fails, the function returns 1, indicating failure.
  * If the environment variable already exists, its value is updated.
  * If the environment variable doesn't exist, it is added to the environment
@@ -57,7 +61,8 @@ char *retrieve_environment_variable_value(info_t *environment_info, const char *
  *
  *  Return: 0 on success, 1 on failure.
  */
-int set_or_update_environment_variable(info_t *info, char *variable_name, char *variable_value)
+int set_or_update_environment_variable(info_t *info,
+	char *variable_name, char *variable_value)
 {
 	char *environment_variable = NULL;
 	list_t *node;
@@ -66,7 +71,8 @@ int set_or_update_environment_variable(info_t *info, char *variable_name, char *
 	if (!variable_name || !variable_value)
 		return (0);
 
-	environment_variable = malloc(string_strlen(variable_name) + string_strlen(variable_value) + 2);
+	environment_variable = malloc(string_strlen(variable_name)
+		+ string_strlen(variable_value) + 2);
 	if (!environment_variable)
 		return (1);
 	string_cpy(environment_variable, variable_name);
@@ -95,7 +101,8 @@ int set_or_update_environment_variable(info_t *info, char *variable_name, char *
 }
 
 /**
- * remove_environment_variable - Unsets (removes) an environment variable from the process
+ * remove_environment_variable - Unsets (removes) an
+ * environment variable from the process
  * environment.
  * @info: A pointer to a structure holding information about the
  * environment variables.

@@ -29,7 +29,8 @@ int remove_alias(info_t *info, char *str)
 	c = *p;
 	*p = 0;
 	ret = delete_node_at_index(&(info->alias),
-		find_node_index(info->alias, find_node_with_prefix_and_char(info->alias, str, -1)));
+		find_node_index(info->alias,
+		find_node_with_prefix_and_char(info->alias, str, -1)));
 	*p = c;
 	return (ret);
 }
@@ -69,14 +70,21 @@ int handle_alias_command(info_t *info)
 		if (p)
 			define_alias(info, info->argv[i]);
 		else
-			print_environment_variable_alias(find_node_with_prefix_and_char(info->alias, info->argv[i], '='));
+			print_environment_variable_alias(
+				find_node_with_prefix_and_char(
+					info->alias,
+					info->argv[i],
+					'='
+				)
+			);
 	}
 
 	return (0);
 }
 
 /**
- * define_alias - Sets an alias for a given command in the information structure.
+ * define_alias - Sets an alias for a given command in the
+ * information structure.
  * An alias is a user-defined shorthand for a command.
  * @info: Pointer to the information structure containing aliases.
  * @str: Pointer to the string containing the alias definition.

@@ -26,9 +26,11 @@ void remove_comments_from_string_buffer(char *buffer)
 }
 
 /**
- * convert_string_to_integer_with_error_handling - Converts a string to an integer with error handling
+ * convert_string_to_integer_with_error_handling - Converts a string to
+ * an integer with error handling
  * @input_string: The string to convert
- * This function takes a string @input_string and attempts to convert it to an integer.
+ * This function takes a string @input_string and attempts to
+ * convert it to an integer.
  * It iterates through each character in the string, multiplying the result
  * by 10 and adding the numerical value of the character. It handles both
  * positive and negative numbers. If the result exceeds the maximum value
@@ -84,7 +86,7 @@ int error_putfd(char character, int fd)
 		write(fd, buf, i);
 		i = 0;
 	}
-	if (character != BUFFER_FLUSH )
+	if (character != BUFFER_FLUSH)
 		buf[i++] = character;
 	return (1);
 }
@@ -111,12 +113,14 @@ int error_putsfd(char *str, int fd)
 }
 
 /**
- * convert_number_to_string - Converts a long integer to a string representation
+ * convert_number_to_string - Converts a long integer to a
+ * string representation
  * in the specified base with optional formatting flags.
  * @number: The long integer to be converted.
  * @radix: The base to which @number should be converted
  * (e.g., 2 for binary, 10 for decimal, 16 for hexadecimal).
- * @conversion_flags: Optional formatting flags to control the conversion process.
+ * @conversion_flags: Optional formatting flags to control
+ * the conversion process.
  *
  * This function takes a long integer and converts it into a string
  * representation according to the specified radix.
@@ -133,7 +137,10 @@ int error_putsfd(char *str, int fd)
  *
  * Return: A pointer to the string representation of the converted number.
  */
-char *convert_number_to_string(long int number, int radix, int conversion_flags)
+char *convert_number_to_string(
+		long int number,
+		int radix,
+		int conversion_flags)
 {
 	static char *digit_set;
 	static char conversion_buffer[50];
@@ -147,7 +154,9 @@ char *convert_number_to_string(long int number, int radix, int conversion_flags)
 		is_negative = '-';
 
 	}
-	digit_set = conversion_flags & CONVERT_LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
+	digit_set = conversion_flags & CONVERT_LOWERCASE
+		? "0123456789abcdef"
+		: "0123456789ABCDEF";
 	result_ptr = &conversion_buffer[49];
 	*result_ptr = '\0';
 

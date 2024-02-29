@@ -13,7 +13,11 @@
 #include <errno.h>
 #include "shell_macros.h"
 
-typedef struct built_in { char *type; int (*func)(info_t *); } built_in_table;
+typedef struct built_in
+{
+	char *type;
+		int (*func)(info_t *);
+	} built_in_table;
 
 /* builtin_commands */
 int change_directory(info_t *);
@@ -59,14 +63,16 @@ int set_or_update_environment_variable(info_t *, char *, char *);
 int remove_environment_variable(info_t *info, char *var);
 
 /* execute processes */
-ssize_t read_from_file_descriptor(info_t *file_info, char *buffer, size_t *bytes_read);
+ssize_t read_from_file_descriptor(
+	info_t *file_info, char *buffer, size_t *bytes_read);
 void fork_command(info_t *info);
 void free_info(info_t *, int);
 int populate_env_list(info_t *);
 char **get_environ(info_t *);
 
 /* command_execution */
-int check_if_path_corresponds_to_known_command(info_t *command_info, char *command_path);
+int check_if_path_corresponds_to_known_command(
+	info_t *command_info, char *command_path);
 char *find_path(info_t *, char *, char *);
 void find_cmd(info_t *);
 void handle_sigint(__attribute__((unused)) int signal_number);

@@ -123,7 +123,8 @@ int display_program_help(info_t *info)
 }
 
 /**
- * is_interactive_mode - Checks if the program is running in an interactive mode.
+ * is_interactive_mode - Checks if the program is
+ * running in an interactive mode.
  * An interactive mode is determined by verifying whether the
  * standard input (stdin) is associated with a terminal (tty),
  * and if the file descriptor for reading (readfd) in the

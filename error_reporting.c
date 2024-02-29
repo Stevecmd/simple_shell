@@ -4,7 +4,8 @@
 #include "shell.h"
 
 /**
- * write_char_to_error_buffer - Writes a character to a buffer for error output.
+ * write_char_to_error_buffer - Writes a character to a
+ * buffer for error output.
  *
  * This function writes a character to a buffer designated for error output.
  * It flushes the buffer if the character is a flush signal or if the buffer
@@ -30,7 +31,8 @@ int write_char_to_error_buffer(char character)
 }
 
 /**
- * print_error_message - Prints a string character by character using print_error_message.
+ * print_error_message - Prints a string character by
+ * character using print_error_message.
  *
  * This function takes a string pointer as input and prints
  * each character of the string using the write_char_to_error_buffer function.

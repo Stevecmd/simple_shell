@@ -40,7 +40,8 @@ int find_builtin_command(info_t *command_info)
 }
 
 /**
- * adjust_buffer_position_for_chain - checks the chain of commands and updates buffer position.
+ * adjust_buffer_position_for_chain - checks the chain of commands
+ * and updates buffer position.
  *
  * @command_info: pointer to structure holding command information.
  * @buffer: pointer to buffer to be updated.
@@ -57,7 +58,8 @@ int find_builtin_command(info_t *command_info)
  *
  * Return: No return.
  */
-void check_chain(info_t *command_info, char *buffer, size_t *current_position, size_t index, size_t buffer_length)
+void check_chain(info_t *command_info, char *buffer, size_t *current_position,
+	size_t index, size_t buffer_length)
 {
 	size_t updated_position = *current_position;
 

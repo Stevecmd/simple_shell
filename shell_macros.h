@@ -21,16 +21,52 @@
 
 extern char **environ;
 
-typedef struct singly_linked_list {
+/**
+ * struct singly_linked_list - Singly linked list node structure
+ * @num: Node number
+ * @str: String data
+ * @next: Pointer to the next node
+ *
+ * Description: Node structure for a singly linked list.
+ */
+
+typedef struct singly_linked_list
+{
 	int num;
 	char *str;
 	struct singly_linked_list *next;
 } list_t;
 
-typedef struct ExecutionInfo {
+/**
+ * struct ExecutionInfo - Structure for execution information
+ * @arg: Command argument
+ * @argv: Array of command arguments
+ * @path: Path to the command
+ * @file_name: Name of the executable file
+ * @environ: Environment variables
+ * @command_buf: Command buffer
+ * @env: Environment list
+ * @history: Command history list
+ * @alias: Alias list
+ * @argc: Argument count
+ * @err_num: Error number
+ * @linecount_flag: Line count flag
+ * @environ_changed: Flag indicating environment change
+ * @cmd_status: Command status
+ * @buf_format: Buffer format
+ * @readfd: Read file descriptor
+ * @history_count: History count
+ * @line_count: Line count
+ *
+ * This structure holds information related to command execution.
+ */
+
+typedef struct ExecutionInfo
+{
 	char *arg, **argv, *path, *file_name, **environ, **command_buf;
 	list_t *env, *history, *alias;
-	int argc, err_num, linecount_flag, environ_changed, cmd_status, buf_format, readfd, history_count;
+	int argc, err_num, linecount_flag, environ_changed,
+		cmd_status, buf_format, readfd, history_count;
 	unsigned int line_count;
 } info_t;
 
