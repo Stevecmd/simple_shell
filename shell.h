@@ -13,6 +13,19 @@
 #include <errno.h>
 #include "shell_macros.h"
 
+/**
+ * struct built_in - Structure for built-in commands
+ * @type: Type of built-in command
+ * @func: Pointer to the function implementing the
+ * built-in command
+ * Description: Structure defining a built-in command,
+ * consisting of a type identifier
+ * and a function pointer pointing to the function implementing the command.
+ * The function typically takes an info_t pointer as its argument
+ * and returns an integer.
+ * This structure is often used in a table of built-in commands.
+ */
+
 typedef struct built_in
 {
 	char *type;
