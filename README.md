@@ -37,8 +37,8 @@ This is my repo for 0x16. C - Simple Shell
 
 ### Output
 
-    Unless specified otherwise, your program must have the exact same output as `sh (/bin/sh)` as well as the exact same error output.
-    The only difference is when you print an error, the name of the program must be equivalent to your `argv[0]` (See below)
+- Unless specified otherwise, your program must have the exact same output as `sh (/bin/sh)` as well as the exact same error output.
+- The only difference is when you print an error, the name of the program must be equivalent to your `argv[0]` (See below)
 
 Example of error with `sh`:
 ```sh
@@ -119,7 +119,7 @@ hsh main.c shell.c test_ls_2
 hsh main.c shell.c test_ls_2
 ```
 
-##Tasks
+## Tasks
 0. Betty would be proud <br />
 Write a beautiful code that passes the Betty checks
 
@@ -130,26 +130,26 @@ Write a UNIX command line interpreter.
 
 Your Shell should:
 
-    Display a prompt and wait for the user to type a command. A command line always ends with a new line. <br />
-    The prompt is displayed again each time a command has been executed. <br />
-    The command lines are simple, no semicolons, no pipes, no redirections or any other advanced features. <br />
-    The command lines are made only of one word. No arguments will be passed to programs. <br />
-    If an executable cannot be found, print an error message and display the prompt again. <br />
-    Handle errors. <br />
-    You have to handle the “end of file” condition `(Ctrl+D)` <br />
+- Display a prompt and wait for the user to type a command. A command line always ends with a new line. <br />
+- The prompt is displayed again each time a command has been executed. <br />
+- The command lines are simple, no semicolons, no pipes, no redirections or any other advanced features. <br />
+- The command lines are made only of one word. No arguments will be passed to programs. <br />
+- If an executable cannot be found, print an error message and display the prompt again. <br />
+- Handle errors. <br />
+- You have to handle the “end of file” condition `(Ctrl+D)` <br />
 
 You don’t have to:
 
-    use the `PATH`
-    implement built-ins
-    handle special characters:` ", ', `, \, *, &, #`
-    be able to move the cursor
-    handle commands with arguments
+- use the `PATH`
+- implement built-ins
+- handle special characters:` ", ', `, \, *, &, #`
+- be able to move the cursor
+- handle commands with arguments
 
 `execve` will be the core part of your Shell, don’t forget to pass the environ to it…
 
 ```sh
-julien@ubuntu:~/shell$ ./shell 
+steve@cmd:~/shell$ ./shell 
 #cisfun$ ls
 ./shell: No such file or directory
 #cisfun$ /bin/ls
@@ -164,7 +164,7 @@ env-environ.c  exec    fork    mypid   ppid   printenv  promptc  shell     stat 
 #cisfun$ exit
 ./shell: No such file or directory
 #cisfun$ ^C
-julien@ubuntu:~/shell$ echo "/bin/ls" | ./shell
+steve@cmd:~/shell$ echo "/bin/ls" | ./shell
 barbie_j       env-main.c  exec.c  fork.c  pid.c  ppid.c    prompt   prompt.c  shell.c  stat.c         wait
 env-environ.c  exec    fork    mypid   ppid   printenv  promptc  shell     stat test_scripting.sh  wait.c
 ```
@@ -174,7 +174,7 @@ Simple shell 0.2 +
 -  Handle the `PATH`
 - `fork` must not be called if the command doesn’t exist
 ```sh
-julien@ubuntu:~/shell$ ./shell_0.3
+steve@cmd:~/shell$ ./shell_0.3
 :) /bin/ls
 barbie_j       env-main.c  exec.c  fork.c  pid.c  ppid.c    prompt   prompt.c  shell_0.3  stat    test_scripting.sh  wait.c
 env-environ.c  exec    fork    mypid   ppid   printenv  promptc  shell     shell.c    stat.c  wait
@@ -183,42 +183,42 @@ barbie_j       env-main.c  exec.c  fork.c  pid.c  ppid.c    prompt   prompt.c  s
 env-environ.c  exec    fork    mypid   ppid   printenv  promptc  shell     shell.c    stat.c  wait
 :) ls -l /tmp 
 total 20
--rw------- 1 julien julien    0 Dec  5 12:09 config-err-aAMZrR
+-rw------- 1 stevecmd stevecmd    0 Dec  5 12:09 config-err-aAMZrR
 drwx------ 3 root   root   4096 Dec  5 12:09 systemd-private-062a0eca7f2a44349733e78cb4abdff4-colord.service-V7DUzr
 drwx------ 3 root   root   4096 Dec  5 12:09 systemd-private-062a0eca7f2a44349733e78cb4abdff4-rtkit-daemon.service-ANGvoV
 drwx------ 3 root   root   4096 Dec  5 12:07 systemd-private-062a0eca7f2a44349733e78cb4abdff4-systemd-timesyncd.service-CdXUtH
--rw-rw-r-- 1 julien julien    0 Dec  5 12:09 unity_support_test.0
+-rw-rw-r-- 1 stevecmd stevecmd    0 Dec  5 12:09 unity_support_test.0
 :) ^C
-julien@ubuntu:~/shell$ 
+steve@cmd:~/shell$ 
 ```
 4. Simple shell 0.4 <br />
 Simple shell 0.3 +
 
-    Implement the `exit` built-in, that exits the shell
-    Usage: `exit`
-    You don’t have to handle any argument to the built-in `exit`
+- Implement the `exit` built-in, that exits the shell
+- Usage: `exit`
+- You don’t have to handle any argument to the built-in `exit`
 
 5. Simple shell 1.0 <br />
 Simple shell 0.4 +
 
 - Implement the `env` built-in, that prints the current environment.
 ```sh
-julien@ubuntu:~/shell$ ./simple_shell
+steve@cmd:~/shell$ ./simple_shell
 $ env
-USER=julien
+USER=stevecmd
 LANGUAGE=en_US
 SESSION=ubuntu
 COMPIZ_CONFIG_PROFILE=ubuntu
 SHLVL=1
-HOME=/home/julien
+HOME=/home/stevecmd
 C_IS=Fun_:)
 DESKTOP_SESSION=ubuntu
-LOGNAME=julien
+LOGNAME=stevecmd
 TERM=xterm-256color
-PATH=/home/julien/bin:/home/julien/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+PATH=/home/stevecmd/bin:/home/stevecmd/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 DISPLAY=:0
 $ exit
-julien@ubuntu:~/shell$ 
+steve@cmd:~/shell$ 
 ```
 6. Simple shell 0.1.1 <br />
 Simple shell 0.1 +
@@ -244,11 +244,11 @@ Simple shell 0.4 +
 - Usage: `exit status`, where status is an integer used to `exit` the shell.
 
 ```sh
-julien@ubuntu:~/shell$ ./shell_0.4.1
+steve@cmd:~/shell$ ./shell_0.4.1
 $ exit 98
-julien@ubuntu:~/shell$ echo $?
+steve@cmd:~/shell$ echo $?
 98
-julien@ubuntu:~/shell$ 
+steve@cmd:~/shell$ 
 ```
 
 9. setenv, unsetenv <br />
@@ -257,81 +257,80 @@ Simple shell 1.0 +
 Implement the setenv and unsetenv builtin commands
 
 1. setenv
-- Initialize a new environment variable, or modify an existing one
-- Command syntax: setenv VARIABLE VALUE
-- Should print something on stderr on failure
+    - Initialize a new environment variable, or modify an existing one
+    - Command syntax: setenv VARIABLE VALUE
+    - Should print something on stderr on failure
 2. unsetenv
-- Remove an environment variable
-- Command syntax: unsetenv VARIABLE
-- Should print something on stderr on failure
+    - Remove an environment variable
+    - Command syntax: unsetenv VARIABLE
+    - Should print something on stderr on failure
 
 10. cd <br />
 Simple shell 1.0 + <br />
 
 Implement the builtin command `cd`:
 
-    Changes the current directory of the process.
-    Command syntax: `cd [DIRECTORY]`
-    If no argument is given to `cd` the command must be interpreted like `cd $HOME`
-    You have to handle the command cd -
-    You have to update the environment variable `PWD` when you change directory
+- Changes the current directory of the process.
+- Command syntax: `cd [DIRECTORY]`
+- If no argument is given to `cd` the command must be interpreted like `cd $HOME`
+- You have to handle the command cd -
+- You have to update the environment variable `PWD` when you change directory
 
 `man chdir, man getcwd`
 
-11. ; 
-Handle the commands separator `;`: <br />
+11. `; ` Handle the commands separator `;`: <br />
 ```sh
-alex@~$ ls /var ; ls /var
+user@~$ ls /var ; ls /var
 backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
 backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
-alex@~$ ls /hbtn ; ls /var
-ls: cannot access /hbtn: No such file or directory
+user@~$ ls /docs ; ls /var
+ls: cannot access /docs: No such file or directory
 backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
-alex@~$ ls /var ; ls /hbtn
+user@~$ ls /var ; ls /docs
 backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
-ls: cannot access /hbtn: No such file or directory
-alex@~$ ls /var ; ls /hbtn ; ls /var ; ls /var
+ls: cannot access /docs: No such file or directory
+user@~$ ls /var ; ls /docs ; ls /var ; ls /var
 backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
-ls: cannot access /hbtn: No such file or directory
+ls: cannot access /docs: No such file or directory
 backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
 backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
 ```
 
-12. && and || <br />
+12. `&&` and `||` <br />
 Handle the `&&` and `||` shell logical operators.
 ```sh
-alex@~$ ls /var && ls /var
+user@~$ ls /var && ls /var
 backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
 backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
-alex@~$ ls /hbtn && ls /var
-ls: cannot access /hbtn: No such file or directory
-alex@~$ ls /var && ls /var && ls /var && ls /hbtn
-backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
-backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
-backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
-ls: cannot access /hbtn: No such file or directory
-alex@~$ ls /var && ls /var && ls /var && ls /hbtn && ls /hbtn
+user@~$ ls /docs && ls /var
+ls: cannot access /docs: No such file or directory
+user@~$ ls /var && ls /var && ls /var && ls /docs
 backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
 backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
 backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
-ls: cannot access /hbtn: No such file or directory
-alex@~$
-alex@~$ ls /var || ls /var
+ls: cannot access /docs: No such file or directory
+user@~$ ls /var && ls /var && ls /var && ls /docs && ls /docs
 backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
-alex@~$ ls /hbtn || ls /var
-ls: cannot access /hbtn: No such file or directory
 backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
-alex@~$ ls /hbtn || ls /hbtn || ls /hbtn || ls /var
-ls: cannot access /hbtn: No such file or directory
-ls: cannot access /hbtn: No such file or directory
-ls: cannot access /hbtn: No such file or directory
 backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
-alex@~$ ls /hbtn || ls /hbtn || ls /hbtn || ls /var || ls /var
-ls: cannot access /hbtn: No such file or directory
-ls: cannot access /hbtn: No such file or directory
-ls: cannot access /hbtn: No such file or directory
+ls: cannot access /docs: No such file or directory
+user@~$
+user@~$ ls /var || ls /var
 backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
-alex@~$
+user@~$ ls /docs || ls /var
+ls: cannot access /docs: No such file or directory
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+user@~$ ls /docs || ls /docs || ls /docs || ls /var
+ls: cannot access /docs: No such file or directory
+ls: cannot access /docs: No such file or directory
+ls: cannot access /docs: No such file or directory
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+user@~$ ls /docs || ls /docs || ls /docs || ls /var || ls /var
+ls: cannot access /docs: No such file or directory
+ls: cannot access /docs: No such file or directory
+ls: cannot access /docs: No such file or directory
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+user@~$
 ```
 
 13. alias 
@@ -349,7 +348,7 @@ alex@~$
 - Handle the `$$` variable
 
 ```sh
-julien@ubuntu:~/shell$ ./hsh
+steve@cmd:~/shell$ ./hsh
 $ ls /var
 backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  snap  spool  tmp
 $ echo $?
@@ -357,77 +356,78 @@ $ echo $?
 $ echo $$
 5104
 $ echo $PATH
-/home/julien/bin:/home/julien/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+/home/stevecmd/bin:/home/stevecmd/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 $ exit 
-julien@ubuntu:~/shell$ 
+steve@cmd:~/shell$ 
 ```
 15. Comments <br />
 Handle comments `(#)`
 ```sh
-julien@ubuntu:~/shell$ sh
+steve@cmd:~/shell$ sh
 $ echo $$ # ls -la
 5114
 $ exit
-julien@ubuntu:~/shell$ 
+steve@cmd:~/shell$ 
 ```
 
 16. File as input 
-
 - Usage: `simple_shell [filename]`
 - Your shell can take a file as a command line argument
 - The file contains all the commands that your shell should run before exiting
 - The file should contain one command per line
 - In this mode, the shell should not print a prompt and should not read from `stdin`
 
+# Caveat
+<bold> I have made significant changes to the structure of my program. <bold /> <br />
+<bold>This was necessitated by the need to pass the checkers <bold /> <br />
+<bold> Otherwise, my initial approach was also fine <bold /> <br />
 
-Executing the individual files: <br/>
-Install gcc:
+Executing the individual files: <br />
+Install gcc: <br />
 `sudo apt install gcc`
 
 Main entry point: <br />
-`gcc -o prompt prompt.c`
+`gcc -o prompt prompt.c` <br />
 `./prompt`
 
 Get process ID: <br />
-`gcc -o mypid pid.c`
+`gcc -o mypid pid.c` <br />
 `./mypid`
 
 Get parent process ID: <br />
-`gcc -o ppid ppid.c`
+`gcc -o ppid ppid.c` <br />
 `./ppid`
 
 Determine whether a function is builtin or external: <br />
-`gcc -o execute_args execute_args.c builtin.c`
+`gcc -o execute_args execute_args.c builtin.c` <br />
 `./execute_args`
 
 Executing a program: <br />
-`gcc -o exec exec.c`
+`gcc -o exec exec.c` <br />
 `./exec`
 
 Print the current environment variables: <br />
-`gcc -o env-environ env-environ.c`
+`gcc -o env-environ env-environ.c` <br />
 `./env-environ`
 
 Print the current environment variables of the current process: <br />
-`gcc -o printenv env-main.c`
+`gcc -o printenv env-main.c` <br />
 `./printenv`
 
 Create a new child process: <br />
-`gcc -o fork fork.c`
+`gcc -o fork fork.c` <br />
 `./fork`
 
 Simple fork a child process and then immediately waits for it:<br />
-`gcc -o wait wait.c`
+`gcc -o wait wait.c` <br />
 `./wait`
 
 Take a filename as a command-line argument and print various pieces of information about the file: <br />
-`gcc -o stat stat.c`
-`./stat`
+`gcc -o stat stat.c` <br />
+`./stat` <br />
+
 Usage:<br />
 `./stat <filename>`
-
-Read stream:
-``
 
 Shell program: <br />
 interactive mode:
