@@ -4,8 +4,8 @@
 #include "shell.h"
 
 /**
- * check_if_path_corresponds_to_known_command -
- * checks if a given path corresponds to a known command.
+ * check_if_path_corresponds_to_known_command - checks if a given path
+ * corresponds to a known command.
  *
  * This function checks whether the provided path corresponds to a
  * known command in the system.
@@ -137,7 +137,7 @@ void find_cmd(info_t *info)
 	{
 		if ((is_interactive_mode(info) ||
 			retrieve_environment_variable_value(info, "PATH=") ||
-		     info->argv[0][0] == '/') &&
+			 info->argv[0][0] == '/') &&
 				check_if_path_corresponds_to_known_command(info, info->argv[0]))
 			fork_command(info);
 		else if (*(info->arg) != '\n')
