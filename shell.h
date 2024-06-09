@@ -96,11 +96,22 @@ void set_info(info_t *info, char **command_line_arguments);
 ssize_t get_input(info_t *);
 
 /* text_processing */
-int is_delimiter(char c, char *delimiter_set);
-char **strtow(char *input_string, char *delimiters);
+int is_delimiter(char character, char *delimiter_set);
+int counting_words(char *input_string, char *delimiters);
+char **allocate_words_array(int numwords);
+char *allocate_and_fill_word(char *input_string, int i, int k);
+int fill_words_array(
+	char *input_string,
+	char *delimiters,
+	char **words,
+	int numwords
+);
+
+/* text_processing_2 */
 int compare_strings(char *string1, char *string2);
-int replace_alias(info_t *);
-int replace_vars(info_t *);
+int replace_alias(info_t *info);
+int replace_vars(info_t *info);
+char **strtow(char *input_string, char *delimiters);
 
 /* linked_list_printing */
 size_t elements_printed(const list_t *head);

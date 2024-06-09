@@ -23,11 +23,11 @@ This is my repo for 0x16. C - Simple Shell
     - What is EOF / “end-of-file”?
 
 ## Requirements
-- Allowed editors: vi, vim, emacs
-- All your files will be compiled on Ubuntu 20.04 LTS using gcc, using the options -Wall -Werror -Wextra -pedantic -std=gnu89
+- Allowed editors: `vi`, `vim`, `emacs`
+- All your files will be compiled on Ubuntu 20.04 LTS using `gcc`, using the options `-Wall -Werror -Wextra -pedantic -std=gnu89`
 - All your files should end with a new line
-- A README.md file, at the root of the folder of the project is mandatory
-- Your code should use the Betty style. It will be checked using betty-style.pl and betty-doc.pl
+- A `README.md` file, at the root of the folder of the project is mandatory
+- Your code should use the Betty style. It will be checked using `betty-style.pl` and `betty-doc.pl`
 - Your shell should not have any memory leaks
 - No more than 5 functions per file
 - All your header files should be include guarded
@@ -258,11 +258,11 @@ Implement the setenv and unsetenv builtin commands
 
 1. setenv
     - Initialize a new environment variable, or modify an existing one
-    - Command syntax: setenv VARIABLE VALUE
+    - Command syntax: `setenv VARIABLE VALUE`
     - Should print something on stderr on failure
 2. unsetenv
     - Remove an environment variable
-    - Command syntax: unsetenv VARIABLE
+    - Command syntax: `unsetenv VARIABLE`
     - Should print something on stderr on failure
 
 10. cd <br />
